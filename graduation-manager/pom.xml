@@ -28,9 +28,9 @@
 		</plugins>
 	</build>
 	<modules>
-		<module>graduation-pojo</module>
-		<module>graduation-mapper</module>
-		<module>graduation-service</module>
-		<module>graduation-web</module>
+	<module>graduation-pojo</module>
+	<module>graduation-mapper</module>
+	<module>graduation-service</module>
+	<module>graduation-web</module>
 	</modules>
 </project>
