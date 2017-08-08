@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.graduation.mapper.ApplyMapper" >
+  <resultMap id="BaseResultMap" type="com.graduation.pojo.Apply" >
+    <id column="employid" property="employid" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="position" property="position" jdbcType="VARCHAR" />
+    <result column="positionid" property="positionid" jdbcType="INTEGER" />
+    <result column="department" property="department" jdbcType="VARCHAR" />
+    <result column="departmentid" property="departmentid" jdbcType="INTEGER" />
+    <result column="education" property="education" jdbcType="INTEGER" />
+    <result column="school" property="school" jdbcType="VARCHAR" />
+    <result column="exprement" property="exprement" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="INTEGER" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="DATE" />
+    <result column="firstpass" property="firstpass" jdbcType="INTEGER" />
+    <result column="firstcreatetime" property="firstcreatetime" jdbcType="DATE" />
+    <result column="firstcreateperson" property="firstcreateperson" jdbcType="VARCHAR" />
+    <result column="secondpass" property="secondpass" jdbcType="INTEGER" />
+    <result column="secondcreatetiem" property="secondcreatetiem" jdbcType="DATE" />
+    <result column="secondcreateperson" property="secondcreateperson" jdbcType="VARCHAR" />
+    <result column="admitted" property="admitted" jdbcType="INTEGER" />
+    <result column="temp1" property="temp1" jdbcType="VARCHAR" />
+    <result column="temp2" property="temp2" jdbcType="VARCHAR" />
+    <result column="temp3" property="temp3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    employid, name, sex, age, position, positionid, department, departmentid, education, 
+    school, exprement, phone, email, time, firstpass, firstcreatetime, firstcreateperson, 
+    secondpass, secondcreatetiem, secondcreateperson, admitted, temp1, temp2, temp3
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.graduation.pojo.ApplyExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from apply
+    where employid = #{employid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from apply
+    where employid = #{employid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.graduation.pojo.ApplyExample" >
+    delete from apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.graduation.pojo.Apply" >
+    insert into apply (employid, name, sex, 
+      age, position, positionid, 
+      department, departmentid, education, 
+      school, exprement, phone, 
+      email, time, firstpass, 
+      firstcreatetime, firstcreateperson, secondpass, 
+      secondcreatetiem, secondcreateperson, admitted, 
+      temp1, temp2, temp3
+      )
+    values (#{employid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{age,jdbcType=INTEGER}, #{position,jdbcType=VARCHAR}, #{positionid,jdbcType=INTEGER}, 
+      #{department,jdbcType=VARCHAR}, #{departmentid,jdbcType=INTEGER}, #{education,jdbcType=INTEGER}, 
+      #{school,jdbcType=VARCHAR}, #{exprement,jdbcType=VARCHAR}, #{phone,jdbcType=INTEGER}, 
+      #{email,jdbcType=VARCHAR}, #{time,jdbcType=DATE}, #{firstpass,jdbcType=INTEGER}, 
+      #{firstcreatetime,jdbcType=DATE}, #{firstcreateperson,jdbcType=VARCHAR}, #{secondpass,jdbcType=INTEGER}, 
+      #{secondcreatetiem,jdbcType=DATE}, #{secondcreateperson,jdbcType=VARCHAR}, #{admitted,jdbcType=INTEGER}, 
+      #{temp1,jdbcType=VARCHAR}, #{temp2,jdbcType=VARCHAR}, #{temp3,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.graduation.pojo.Apply" >
+    insert into apply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="employid != null" >
+        employid,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="position != null" >
+        position,
+      </if>
+      <if test="positionid != null" >
+        positionid,
+      </if>
+      <if test="department != null" >
+        department,
+      </if>
+      <if test="departmentid != null" >
+        departmentid,
+      </if>
+      <if test="education != null" >
+        education,
+      </if>
+      <if test="school != null" >
+        school,
+      </if>
+      <if test="exprement != null" >
+        exprement,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="firstpass != null" >
+        firstpass,
+      </if>
+      <if test="firstcreatetime != null" >
+        firstcreatetime,
+      </if>
+      <if test="firstcreateperson != null" >
+        firstcreateperson,
+      </if>
+      <if test="secondpass != null" >
+        secondpass,
+      </if>
+      <if test="secondcreatetiem != null" >
+        secondcreatetiem,
+      </if>
+      <if test="secondcreateperson != null" >
+        secondcreateperson,
+      </if>
+      <if test="admitted != null" >
+        admitted,
+      </if>
+      <if test="temp1 != null" >
+        temp1,
+      </if>
+      <if test="temp2 != null" >
+        temp2,
+      </if>
+      <if test="temp3 != null" >
+        temp3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="employid != null" >
+        #{employid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="positionid != null" >
+        #{positionid,jdbcType=INTEGER},
+      </if>
+      <if test="department != null" >
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentid != null" >
+        #{departmentid,jdbcType=INTEGER},
+      </if>
+      <if test="education != null" >
+        #{education,jdbcType=INTEGER},
+      </if>
+      <if test="school != null" >
+        #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="exprement != null" >
+        #{exprement,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=INTEGER},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=DATE},
+      </if>
+      <if test="firstpass != null" >
+        #{firstpass,jdbcType=INTEGER},
+      </if>
+      <if test="firstcreatetime != null" >
+        #{firstcreatetime,jdbcType=DATE},
+      </if>
+      <if test="firstcreateperson != null" >
+        #{firstcreateperson,jdbcType=VARCHAR},
+      </if>
+      <if test="secondpass != null" >
+        #{secondpass,jdbcType=INTEGER},
+      </if>
+      <if test="secondcreatetiem != null" >
+        #{secondcreatetiem,jdbcType=DATE},
+      </if>
+      <if test="secondcreateperson != null" >
+        #{secondcreateperson,jdbcType=VARCHAR},
+      </if>
+      <if test="admitted != null" >
+        #{admitted,jdbcType=INTEGER},
+      </if>
+      <if test="temp1 != null" >
+        #{temp1,jdbcType=VARCHAR},
+      </if>
+      <if test="temp2 != null" >
+        #{temp2,jdbcType=VARCHAR},
+      </if>
+      <if test="temp3 != null" >
+        #{temp3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.graduation.pojo.ApplyExample" resultType="java.lang.Integer" >
+    select count(*) from apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update apply
+    <set >
+      <if test="record.employid != null" >
+        employid = #{record.employid,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null" >
+        sex = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.age != null" >
+        age = #{record.age,jdbcType=INTEGER},
+      </if>
+      <if test="record.position != null" >
+        position = #{record.position,jdbcType=VARCHAR},
+      </if>
+      <if test="record.positionid != null" >
+        positionid = #{record.positionid,jdbcType=INTEGER},
+      </if>
+      <if test="record.department != null" >
+        department = #{record.department,jdbcType=VARCHAR},
+      </if>
+      <if test="record.departmentid != null" >
+        departmentid = #{record.departmentid,jdbcType=INTEGER},
+      </if>
+      <if test="record.education != null" >
+        education = #{record.education,jdbcType=INTEGER},
+      </if>
+      <if test="record.school != null" >
+        school = #{record.school,jdbcType=VARCHAR},
+      </if>
+      <if test="record.exprement != null" >
+        exprement = #{record.exprement,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null" >
+        phone = #{record.phone,jdbcType=INTEGER},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.time != null" >
+        time = #{record.time,jdbcType=DATE},
+      </if>
+      <if test="record.firstpass != null" >
+        firstpass = #{record.firstpass,jdbcType=INTEGER},
+      </if>
+      <if test="record.firstcreatetime != null" >
+        firstcreatetime = #{record.firstcreatetime,jdbcType=DATE},
+      </if>
+      <if test="record.firstcreateperson != null" >
+        firstcreateperson = #{record.firstcreateperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.secondpass != null" >
+        secondpass = #{record.secondpass,jdbcType=INTEGER},
+      </if>
+      <if test="record.secondcreatetiem != null" >
+        secondcreatetiem = #{record.secondcreatetiem,jdbcType=DATE},
+      </if>
+      <if test="record.secondcreateperson != null" >
+        secondcreateperson = #{record.secondcreateperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.admitted != null" >
+        admitted = #{record.admitted,jdbcType=INTEGER},
+      </if>
+      <if test="record.temp1 != null" >
+        temp1 = #{record.temp1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.temp2 != null" >
+        temp2 = #{record.temp2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.temp3 != null" >
+        temp3 = #{record.temp3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update apply
+    set employid = #{record.employid,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=VARCHAR},
+      age = #{record.age,jdbcType=INTEGER},
+      position = #{record.position,jdbcType=VARCHAR},
+      positionid = #{record.positionid,jdbcType=INTEGER},
+      department = #{record.department,jdbcType=VARCHAR},
+      departmentid = #{record.departmentid,jdbcType=INTEGER},
+      education = #{record.education,jdbcType=INTEGER},
+      school = #{record.school,jdbcType=VARCHAR},
+      exprement = #{record.exprement,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=INTEGER},
+      email = #{record.email,jdbcType=VARCHAR},
+      time = #{record.time,jdbcType=DATE},
+      firstpass = #{record.firstpass,jdbcType=INTEGER},
+      firstcreatetime = #{record.firstcreatetime,jdbcType=DATE},
+      firstcreateperson = #{record.firstcreateperson,jdbcType=VARCHAR},
+      secondpass = #{record.secondpass,jdbcType=INTEGER},
+      secondcreatetiem = #{record.secondcreatetiem,jdbcType=DATE},
+      secondcreateperson = #{record.secondcreateperson,jdbcType=VARCHAR},
+      admitted = #{record.admitted,jdbcType=INTEGER},
+      temp1 = #{record.temp1,jdbcType=VARCHAR},
+      temp2 = #{record.temp2,jdbcType=VARCHAR},
+      temp3 = #{record.temp3,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.graduation.pojo.Apply" >
+    update apply
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="position != null" >
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="positionid != null" >
+        positionid = #{positionid,jdbcType=INTEGER},
+      </if>
+      <if test="department != null" >
+        department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentid != null" >
+        departmentid = #{departmentid,jdbcType=INTEGER},
+      </if>
+      <if test="education != null" >
+        education = #{education,jdbcType=INTEGER},
+      </if>
+      <if test="school != null" >
+        school = #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="exprement != null" >
+        exprement = #{exprement,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=INTEGER},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=DATE},
+      </if>
+      <if test="firstpass != null" >
+        firstpass = #{firstpass,jdbcType=INTEGER},
+      </if>
+      <if test="firstcreatetime != null" >
+        firstcreatetime = #{firstcreatetime,jdbcType=DATE},
+      </if>
+      <if test="firstcreateperson != null" >
+        firstcreateperson = #{firstcreateperson,jdbcType=VARCHAR},
+      </if>
+      <if test="secondpass != null" >
+        secondpass = #{secondpass,jdbcType=INTEGER},
+      </if>
+      <if test="secondcreatetiem != null" >
+        secondcreatetiem = #{secondcreatetiem,jdbcType=DATE},
+      </if>
+      <if test="secondcreateperson != null" >
+        secondcreateperson = #{secondcreateperson,jdbcType=VARCHAR},
+      </if>
+      <if test="admitted != null" >
+        admitted = #{admitted,jdbcType=INTEGER},
+      </if>
+      <if test="temp1 != null" >
+        temp1 = #{temp1,jdbcType=VARCHAR},
+      </if>
+      <if test="temp2 != null" >
+        temp2 = #{temp2,jdbcType=VARCHAR},
+      </if>
+      <if test="temp3 != null" >
+        temp3 = #{temp3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where employid = #{employid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.graduation.pojo.Apply" >
+    update apply
+    set name = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      position = #{position,jdbcType=VARCHAR},
+      positionid = #{positionid,jdbcType=INTEGER},
+      department = #{department,jdbcType=VARCHAR},
+      departmentid = #{departmentid,jdbcType=INTEGER},
+      education = #{education,jdbcType=INTEGER},
+      school = #{school,jdbcType=VARCHAR},
+      exprement = #{exprement,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=INTEGER},
+      email = #{email,jdbcType=VARCHAR},
+      time = #{time,jdbcType=DATE},
+      firstpass = #{firstpass,jdbcType=INTEGER},
+      firstcreatetime = #{firstcreatetime,jdbcType=DATE},
+      firstcreateperson = #{firstcreateperson,jdbcType=VARCHAR},
+      secondpass = #{secondpass,jdbcType=INTEGER},
+      secondcreatetiem = #{secondcreatetiem,jdbcType=DATE},
+      secondcreateperson = #{secondcreateperson,jdbcType=VARCHAR},
+      admitted = #{admitted,jdbcType=INTEGER},
+      temp1 = #{temp1,jdbcType=VARCHAR},
+      temp2 = #{temp2,jdbcType=VARCHAR},
+      temp3 = #{temp3,jdbcType=VARCHAR}
+    where employid = #{employid,jdbcType=INTEGER}
+  </update>
+</mapper>

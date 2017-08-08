@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.graduation.mapper.SalaryMapper" >
+  <resultMap id="BaseResultMap" type="com.graduation.pojo.Salary" >
+    <id column="salaryid" property="salaryid" jdbcType="INTEGER" />
+    <result column="memberid" property="memberid" jdbcType="INTEGER" />
+    <result column="membername" property="membername" jdbcType="VARCHAR" />
+    <result column="base" property="base" jdbcType="VARCHAR" />
+    <result column="eat" property="eat" jdbcType="VARCHAR" />
+    <result column="car" property="car" jdbcType="VARCHAR" />
+    <result column="ontime" property="ontime" jdbcType="VARCHAR" />
+    <result column="punishiment" property="punishiment" jdbcType="VARCHAR" />
+    <result column="reduce" property="reduce" jdbcType="VARCHAR" />
+    <result column="total" property="total" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="DATE" />
+    <result column="isdeleted" property="isdeleted" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="createperson" property="createperson" jdbcType="VARCHAR" />
+    <result column="temp1" property="temp1" jdbcType="VARCHAR" />
+    <result column="temp2" property="temp2" jdbcType="VARCHAR" />
+    <result column="temp3" property="temp3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    salaryid, memberid, membername, base, eat, car, ontime, punishiment, reduce, total, 
+    time, isdeleted, createtime, createperson, temp1, temp2, temp3
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.graduation.pojo.SalaryExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from salary
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from salary
+    where salaryid = #{salaryid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from salary
+    where salaryid = #{salaryid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.graduation.pojo.SalaryExample" >
+    delete from salary
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.graduation.pojo.Salary" >
+    insert into salary (salaryid, memberid, membername, 
+      base, eat, car, ontime, 
+      punishiment, reduce, total, 
+      time, isdeleted, createtime, 
+      createperson, temp1, temp2, 
+      temp3)
+    values (#{salaryid,jdbcType=INTEGER}, #{memberid,jdbcType=INTEGER}, #{membername,jdbcType=VARCHAR}, 
+      #{base,jdbcType=VARCHAR}, #{eat,jdbcType=VARCHAR}, #{car,jdbcType=VARCHAR}, #{ontime,jdbcType=VARCHAR}, 
+      #{punishiment,jdbcType=VARCHAR}, #{reduce,jdbcType=VARCHAR}, #{total,jdbcType=VARCHAR}, 
+      #{time,jdbcType=DATE}, #{isdeleted,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{createperson,jdbcType=VARCHAR}, #{temp1,jdbcType=VARCHAR}, #{temp2,jdbcType=VARCHAR}, 
+      #{temp3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.graduation.pojo.Salary" >
+    insert into salary
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="salaryid != null" >
+        salaryid,
+      </if>
+      <if test="memberid != null" >
+        memberid,
+      </if>
+      <if test="membername != null" >
+        membername,
+      </if>
+      <if test="base != null" >
+        base,
+      </if>
+      <if test="eat != null" >
+        eat,
+      </if>
+      <if test="car != null" >
+        car,
+      </if>
+      <if test="ontime != null" >
+        ontime,
+      </if>
+      <if test="punishiment != null" >
+        punishiment,
+      </if>
+      <if test="reduce != null" >
+        reduce,
+      </if>
+      <if test="total != null" >
+        total,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="isdeleted != null" >
+        isdeleted,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="createperson != null" >
+        createperson,
+      </if>
+      <if test="temp1 != null" >
+        temp1,
+      </if>
+      <if test="temp2 != null" >
+        temp2,
+      </if>
+      <if test="temp3 != null" >
+        temp3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="salaryid != null" >
+        #{salaryid,jdbcType=INTEGER},
+      </if>
+      <if test="memberid != null" >
+        #{memberid,jdbcType=INTEGER},
+      </if>
+      <if test="membername != null" >
+        #{membername,jdbcType=VARCHAR},
+      </if>
+      <if test="base != null" >
+        #{base,jdbcType=VARCHAR},
+      </if>
+      <if test="eat != null" >
+        #{eat,jdbcType=VARCHAR},
+      </if>
+      <if test="car != null" >
+        #{car,jdbcType=VARCHAR},
+      </if>
+      <if test="ontime != null" >
+        #{ontime,jdbcType=VARCHAR},
+      </if>
+      <if test="punishiment != null" >
+        #{punishiment,jdbcType=VARCHAR},
+      </if>
+      <if test="reduce != null" >
+        #{reduce,jdbcType=VARCHAR},
+      </if>
+      <if test="total != null" >
+        #{total,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=DATE},
+      </if>
+      <if test="isdeleted != null" >
+        #{isdeleted,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createperson != null" >
+        #{createperson,jdbcType=VARCHAR},
+      </if>
+      <if test="temp1 != null" >
+        #{temp1,jdbcType=VARCHAR},
+      </if>
+      <if test="temp2 != null" >
+        #{temp2,jdbcType=VARCHAR},
+      </if>
+      <if test="temp3 != null" >
+        #{temp3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.graduation.pojo.SalaryExample" resultType="java.lang.Integer" >
+    select count(*) from salary
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update salary
+    <set >
+      <if test="record.salaryid != null" >
+        salaryid = #{record.salaryid,jdbcType=INTEGER},
+      </if>
+      <if test="record.memberid != null" >
+        memberid = #{record.memberid,jdbcType=INTEGER},
+      </if>
+      <if test="record.membername != null" >
+        membername = #{record.membername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.base != null" >
+        base = #{record.base,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eat != null" >
+        eat = #{record.eat,jdbcType=VARCHAR},
+      </if>
+      <if test="record.car != null" >
+        car = #{record.car,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ontime != null" >
+        ontime = #{record.ontime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.punishiment != null" >
+        punishiment = #{record.punishiment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reduce != null" >
+        reduce = #{record.reduce,jdbcType=VARCHAR},
+      </if>
+      <if test="record.total != null" >
+        total = #{record.total,jdbcType=VARCHAR},
+      </if>
+      <if test="record.time != null" >
+        time = #{record.time,jdbcType=DATE},
+      </if>
+      <if test="record.isdeleted != null" >
+        isdeleted = #{record.isdeleted,jdbcType=INTEGER},
+      </if>
+      <if test="record.createtime != null" >
+        createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createperson != null" >
+        createperson = #{record.createperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.temp1 != null" >
+        temp1 = #{record.temp1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.temp2 != null" >
+        temp2 = #{record.temp2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.temp3 != null" >
+        temp3 = #{record.temp3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update salary
+    set salaryid = #{record.salaryid,jdbcType=INTEGER},
+      memberid = #{record.memberid,jdbcType=INTEGER},
+      membername = #{record.membername,jdbcType=VARCHAR},
+      base = #{record.base,jdbcType=VARCHAR},
+      eat = #{record.eat,jdbcType=VARCHAR},
+      car = #{record.car,jdbcType=VARCHAR},
+      ontime = #{record.ontime,jdbcType=VARCHAR},
+      punishiment = #{record.punishiment,jdbcType=VARCHAR},
+      reduce = #{record.reduce,jdbcType=VARCHAR},
+      total = #{record.total,jdbcType=VARCHAR},
+      time = #{record.time,jdbcType=DATE},
+      isdeleted = #{record.isdeleted,jdbcType=INTEGER},
+      createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      createperson = #{record.createperson,jdbcType=VARCHAR},
+      temp1 = #{record.temp1,jdbcType=VARCHAR},
+      temp2 = #{record.temp2,jdbcType=VARCHAR},
+      temp3 = #{record.temp3,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.graduation.pojo.Salary" >
+    update salary
+    <set >
+      <if test="memberid != null" >
+        memberid = #{memberid,jdbcType=INTEGER},
+      </if>
+      <if test="membername != null" >
+        membername = #{membername,jdbcType=VARCHAR},
+      </if>
+      <if test="base != null" >
+        base = #{base,jdbcType=VARCHAR},
+      </if>
+      <if test="eat != null" >
+        eat = #{eat,jdbcType=VARCHAR},
+      </if>
+      <if test="car != null" >
+        car = #{car,jdbcType=VARCHAR},
+      </if>
+      <if test="ontime != null" >
+        ontime = #{ontime,jdbcType=VARCHAR},
+      </if>
+      <if test="punishiment != null" >
+        punishiment = #{punishiment,jdbcType=VARCHAR},
+      </if>
+      <if test="reduce != null" >
+        reduce = #{reduce,jdbcType=VARCHAR},
+      </if>
+      <if test="total != null" >
+        total = #{total,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=DATE},
+      </if>
+      <if test="isdeleted != null" >
+        isdeleted = #{isdeleted,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createperson != null" >
+        createperson = #{createperson,jdbcType=VARCHAR},
+      </if>
+      <if test="temp1 != null" >
+        temp1 = #{temp1,jdbcType=VARCHAR},
+      </if>
+      <if test="temp2 != null" >
+        temp2 = #{temp2,jdbcType=VARCHAR},
+      </if>
+      <if test="temp3 != null" >
+        temp3 = #{temp3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where salaryid = #{salaryid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.graduation.pojo.Salary" >
+    update salary
+    set memberid = #{memberid,jdbcType=INTEGER},
+      membername = #{membername,jdbcType=VARCHAR},
+      base = #{base,jdbcType=VARCHAR},
+      eat = #{eat,jdbcType=VARCHAR},
+      car = #{car,jdbcType=VARCHAR},
+      ontime = #{ontime,jdbcType=VARCHAR},
+      punishiment = #{punishiment,jdbcType=VARCHAR},
+      reduce = #{reduce,jdbcType=VARCHAR},
+      total = #{total,jdbcType=VARCHAR},
+      time = #{time,jdbcType=DATE},
+      isdeleted = #{isdeleted,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      createperson = #{createperson,jdbcType=VARCHAR},
+      temp1 = #{temp1,jdbcType=VARCHAR},
+      temp2 = #{temp2,jdbcType=VARCHAR},
+      temp3 = #{temp3,jdbcType=VARCHAR}
+    where salaryid = #{salaryid,jdbcType=INTEGER}
+  </update>
+</mapper>

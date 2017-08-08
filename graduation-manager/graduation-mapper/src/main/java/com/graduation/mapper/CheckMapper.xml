@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.graduation.mapper.CheckMapper" >
+  <resultMap id="BaseResultMap" type="com.graduation.pojo.Check" >
+    <id column="checkid" property="checkid" jdbcType="INTEGER" />
+    <result column="memberid" property="memberid" jdbcType="INTEGER" />
+    <result column="membername" property="membername" jdbcType="INTEGER" />
+    <result column="time" property="time" jdbcType="DATE" />
+    <result column="ontime" property="ontime" jdbcType="INTEGER" />
+    <result column="leave" property="leave" jdbcType="INTEGER" />
+    <result column="missing" property="missing" jdbcType="INTEGER" />
+    <result column="late" property="late" jdbcType="INTEGER" />
+    <result column="vacation" property="vacation" jdbcType="INTEGER" />
+    <result column="goout" property="goout" jdbcType="INTEGER" />
+    <result column="plus" property="plus" jdbcType="INTEGER" />
+    <result column="isdeleted" property="isdeleted" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="createperson" property="createperson" jdbcType="VARCHAR" />
+    <result column="temp1" property="temp1" jdbcType="VARCHAR" />
+    <result column="temp2" property="temp2" jdbcType="VARCHAR" />
+    <result column="temp3" property="temp3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    checkid, memberid, membername, time, ontime, leave, missing, late, vacation, goout, 
+    plus, isdeleted, createtime, createperson, temp1, temp2, temp3
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.graduation.pojo.CheckExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from check
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from check
+    where checkid = #{checkid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from check
+    where checkid = #{checkid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.graduation.pojo.CheckExample" >
+    delete from check
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.graduation.pojo.Check" >
+    insert into check (checkid, memberid, membername, 
+      time, ontime, leave, missing, 
+      late, vacation, goout, 
+      plus, isdeleted, createtime, 
+      createperson, temp1, temp2, 
+      temp3)
+    values (#{checkid,jdbcType=INTEGER}, #{memberid,jdbcType=INTEGER}, #{membername,jdbcType=INTEGER}, 
+      #{time,jdbcType=DATE}, #{ontime,jdbcType=INTEGER}, #{leave,jdbcType=INTEGER}, #{missing,jdbcType=INTEGER}, 
+      #{late,jdbcType=INTEGER}, #{vacation,jdbcType=INTEGER}, #{goout,jdbcType=INTEGER}, 
+      #{plus,jdbcType=INTEGER}, #{isdeleted,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{createperson,jdbcType=VARCHAR}, #{temp1,jdbcType=VARCHAR}, #{temp2,jdbcType=VARCHAR}, 
+      #{temp3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.graduation.pojo.Check" >
+    insert into check
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="checkid != null" >
+        checkid,
+      </if>
+      <if test="memberid != null" >
+        memberid,
+      </if>
+      <if test="membername != null" >
+        membername,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="ontime != null" >
+        ontime,
+      </if>
+      <if test="leave != null" >
+        leave,
+      </if>
+      <if test="missing != null" >
+        missing,
+      </if>
+      <if test="late != null" >
+        late,
+      </if>
+      <if test="vacation != null" >
+        vacation,
+      </if>
+      <if test="goout != null" >
+        goout,
+      </if>
+      <if test="plus != null" >
+        plus,
+      </if>
+      <if test="isdeleted != null" >
+        isdeleted,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="createperson != null" >
+        createperson,
+      </if>
+      <if test="temp1 != null" >
+        temp1,
+      </if>
+      <if test="temp2 != null" >
+        temp2,
+      </if>
+      <if test="temp3 != null" >
+        temp3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="checkid != null" >
+        #{checkid,jdbcType=INTEGER},
+      </if>
+      <if test="memberid != null" >
+        #{memberid,jdbcType=INTEGER},
+      </if>
+      <if test="membername != null" >
+        #{membername,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=DATE},
+      </if>
+      <if test="ontime != null" >
+        #{ontime,jdbcType=INTEGER},
+      </if>
+      <if test="leave != null" >
+        #{leave,jdbcType=INTEGER},
+      </if>
+      <if test="missing != null" >
+        #{missing,jdbcType=INTEGER},
+      </if>
+      <if test="late != null" >
+        #{late,jdbcType=INTEGER},
+      </if>
+      <if test="vacation != null" >
+        #{vacation,jdbcType=INTEGER},
+      </if>
+      <if test="goout != null" >
+        #{goout,jdbcType=INTEGER},
+      </if>
+      <if test="plus != null" >
+        #{plus,jdbcType=INTEGER},
+      </if>
+      <if test="isdeleted != null" >
+        #{isdeleted,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createperson != null" >
+        #{createperson,jdbcType=VARCHAR},
+      </if>
+      <if test="temp1 != null" >
+        #{temp1,jdbcType=VARCHAR},
+      </if>
+      <if test="temp2 != null" >
+        #{temp2,jdbcType=VARCHAR},
+      </if>
+      <if test="temp3 != null" >
+        #{temp3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.graduation.pojo.CheckExample" resultType="java.lang.Integer" >
+    select count(*) from check
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update check
+    <set >
+      <if test="record.checkid != null" >
+        checkid = #{record.checkid,jdbcType=INTEGER},
+      </if>
+      <if test="record.memberid != null" >
+        memberid = #{record.memberid,jdbcType=INTEGER},
+      </if>
+      <if test="record.membername != null" >
+        membername = #{record.membername,jdbcType=INTEGER},
+      </if>
+      <if test="record.time != null" >
+        time = #{record.time,jdbcType=DATE},
+      </if>
+      <if test="record.ontime != null" >
+        ontime = #{record.ontime,jdbcType=INTEGER},
+      </if>
+      <if test="record.leave != null" >
+        leave = #{record.leave,jdbcType=INTEGER},
+      </if>
+      <if test="record.missing != null" >
+        missing = #{record.missing,jdbcType=INTEGER},
+      </if>
+      <if test="record.late != null" >
+        late = #{record.late,jdbcType=INTEGER},
+      </if>
+      <if test="record.vacation != null" >
+        vacation = #{record.vacation,jdbcType=INTEGER},
+      </if>
+      <if test="record.goout != null" >
+        goout = #{record.goout,jdbcType=INTEGER},
+      </if>
+      <if test="record.plus != null" >
+        plus = #{record.plus,jdbcType=INTEGER},
+      </if>
+      <if test="record.isdeleted != null" >
+        isdeleted = #{record.isdeleted,jdbcType=INTEGER},
+      </if>
+      <if test="record.createtime != null" >
+        createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createperson != null" >
+        createperson = #{record.createperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.temp1 != null" >
+        temp1 = #{record.temp1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.temp2 != null" >
+        temp2 = #{record.temp2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.temp3 != null" >
+        temp3 = #{record.temp3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update check
+    set checkid = #{record.checkid,jdbcType=INTEGER},
+      memberid = #{record.memberid,jdbcType=INTEGER},
+      membername = #{record.membername,jdbcType=INTEGER},
+      time = #{record.time,jdbcType=DATE},
+      ontime = #{record.ontime,jdbcType=INTEGER},
+      leave = #{record.leave,jdbcType=INTEGER},
+      missing = #{record.missing,jdbcType=INTEGER},
+      late = #{record.late,jdbcType=INTEGER},
+      vacation = #{record.vacation,jdbcType=INTEGER},
+      goout = #{record.goout,jdbcType=INTEGER},
+      plus = #{record.plus,jdbcType=INTEGER},
+      isdeleted = #{record.isdeleted,jdbcType=INTEGER},
+      createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      createperson = #{record.createperson,jdbcType=VARCHAR},
+      temp1 = #{record.temp1,jdbcType=VARCHAR},
+      temp2 = #{record.temp2,jdbcType=VARCHAR},
+      temp3 = #{record.temp3,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.graduation.pojo.Check" >
+    update check
+    <set >
+      <if test="memberid != null" >
+        memberid = #{memberid,jdbcType=INTEGER},
+      </if>
+      <if test="membername != null" >
+        membername = #{membername,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=DATE},
+      </if>
+      <if test="ontime != null" >
+        ontime = #{ontime,jdbcType=INTEGER},
+      </if>
+      <if test="leave != null" >
+        leave = #{leave,jdbcType=INTEGER},
+      </if>
+      <if test="missing != null" >
+        missing = #{missing,jdbcType=INTEGER},
+      </if>
+      <if test="late != null" >
+        late = #{late,jdbcType=INTEGER},
+      </if>
+      <if test="vacation != null" >
+        vacation = #{vacation,jdbcType=INTEGER},
+      </if>
+      <if test="goout != null" >
+        goout = #{goout,jdbcType=INTEGER},
+      </if>
+      <if test="plus != null" >
+        plus = #{plus,jdbcType=INTEGER},
+      </if>
+      <if test="isdeleted != null" >
+        isdeleted = #{isdeleted,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createperson != null" >
+        createperson = #{createperson,jdbcType=VARCHAR},
+      </if>
+      <if test="temp1 != null" >
+        temp1 = #{temp1,jdbcType=VARCHAR},
+      </if>
+      <if test="temp2 != null" >
+        temp2 = #{temp2,jdbcType=VARCHAR},
+      </if>
+      <if test="temp3 != null" >
+        temp3 = #{temp3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where checkid = #{checkid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.graduation.pojo.Check" >
+    update check
+    set memberid = #{memberid,jdbcType=INTEGER},
+      membername = #{membername,jdbcType=INTEGER},
+      time = #{time,jdbcType=DATE},
+      ontime = #{ontime,jdbcType=INTEGER},
+      leave = #{leave,jdbcType=INTEGER},
+      missing = #{missing,jdbcType=INTEGER},
+      late = #{late,jdbcType=INTEGER},
+      vacation = #{vacation,jdbcType=INTEGER},
+      goout = #{goout,jdbcType=INTEGER},
+      plus = #{plus,jdbcType=INTEGER},
+      isdeleted = #{isdeleted,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      createperson = #{createperson,jdbcType=VARCHAR},
+      temp1 = #{temp1,jdbcType=VARCHAR},
+      temp2 = #{temp2,jdbcType=VARCHAR},
+      temp3 = #{temp3,jdbcType=VARCHAR}
+    where checkid = #{checkid,jdbcType=INTEGER}
+  </update>
+</mapper>
