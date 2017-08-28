@@ -3,7 +3,7 @@ package com.graduation.pojo;
 import java.util.Date;
 
 public class Employee {
-    private Integer memberid;
+    private Integer id;
 
     private String name;
 
@@ -33,7 +33,7 @@ public class Employee {
 
     private Date finishtime;
 
-    private Integer foreign;
+    private Integer english;
 
     private Integer computer;
 
@@ -61,12 +61,12 @@ public class Employee {
 
     private String temp3;
 
-    public Integer getMemberid() {
-        return memberid;
+    public Integer getId() {
+        return id;
     }
 
-    public void setMemberid(Integer memberid) {
-        this.memberid = memberid;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -181,12 +181,12 @@ public class Employee {
         this.finishtime = finishtime;
     }
 
-    public Integer getForeign() {
-        return foreign;
+    public Integer getEnglish() {
+        return english;
     }
 
-    public void setForeign(Integer foreign) {
-        this.foreign = foreign;
+    public void setEnglish(Integer english) {
+        this.english = english;
     }
 
     public Integer getComputer() {

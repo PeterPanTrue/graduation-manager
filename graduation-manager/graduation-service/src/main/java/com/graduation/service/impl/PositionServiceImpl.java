@@ -6,10 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.graduation.mapper.PositionMapper;
+import com.graduation.pojo.Department;
 import com.graduation.pojo.Position;
 import com.graduation.pojo.PositionExample;
-import com.graduation.pojo.Role;
-import com.graduation.pojo.RoleExample;
 import com.graduation.pojo.PositionExample.Criteria;
 import com.graduation.service.PositionService;
 
@@ -39,20 +38,41 @@ public class PositionServiceImpl implements PositionService{
 
 	@Override
 	public Position get(Integer id) {
-		PositionExample example=new PositionExample();
-		Criteria criteria=example.createCriteria();
-		criteria.andPositionidEqualTo(id);
-		List<Position> list=mapper.selectByExample(example);
-		if(list==null||list.size()==0){
-			return null;
-		}else{
-			return list.get(0);
-		}
+		return mapper.selectByPrimaryKey(id);
 	}
 
 	@Override
 	public void update(Position t) {
 		mapper.updateByPrimaryKey(t);
 	}
+ 
+	@Override
+	public int count() {
+		PositionExample example=new PositionExample();
+		return mapper.countByExample(example);
+	}
 
+	@Override
+	public List<Position> pageSelect(Integer id, Integer page, Integer rows,
+			String sort, String order) {
+		List<Position> list=mapper.pageSelect(id,(page-1)*rows,rows,sort,order);
+		return list;
+	}
+
+	@Override
+	public List<Position> pageSelect(Integer id, String department,
+			Integer page, Integer rows, String sort, String order) {
+		List<Position> list=mapper.pageSelectByDepartment(id,department,(page-1)*rows,rows,sort,order);
+		return list;
+	}
+
+	@Override
+	public List<Position> select(String position) {
+		PositionExample example=new PositionExample();
+		Criteria criteria=example.createCriteria();
+		criteria.andNameEqualTo(position);
+		List<Position> list=mapper.selectByExample(example);
+		return list;
+	}
+	
 }

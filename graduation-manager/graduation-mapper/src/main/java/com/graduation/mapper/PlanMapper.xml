@@ -8,7 +8,9 @@
     <result column="planmotive" property="planmotive" jdbcType="VARCHAR" />
     <result column="starttime" property="starttime" jdbcType="DATE" />
     <result column="endtime" property="endtime" jdbcType="DATE" />
-    <result column="where" property="where" jdbcType="VARCHAR" />
+    <result column="beforetime" property="beforetime" jdbcType="VARCHAR" />
+    <result column="aftertime" property="aftertime" jdbcType="VARCHAR" />
+    <result column="whereplace" property="whereplace" jdbcType="VARCHAR" />
     <result column="teacher" property="teacher" jdbcType="VARCHAR" />
     <result column="data" property="data" jdbcType="VARCHAR" />
     <result column="people" property="people" jdbcType="VARCHAR" />
@@ -78,8 +80,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    planid, planname, plancontent, planmotive, starttime, endtime, where, teacher, data, 
-    people, isdeleted, createtime, createperson, temp1, temp2, temp3
+    planid, planname, plancontent, planmotive, starttime, endtime, beforetime, aftertime, 
+    whereplace, teacher, data, people, isdeleted, createtime, createperson, temp1, temp2, 
+    temp3
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.graduation.pojo.PlanExample" >
     select
@@ -114,16 +117,18 @@
   <insert id="insert" parameterType="com.graduation.pojo.Plan" >
     insert into plan (planid, planname, plancontent, 
       planmotive, starttime, endtime, 
-      where, teacher, data, 
-      people, isdeleted, createtime, 
-      createperson, temp1, temp2, 
-      temp3)
+      beforetime, aftertime, whereplace, 
+      teacher, data, people, 
+      isdeleted, createtime, createperson, 
+      temp1, temp2, temp3
+      )
     values (#{planid,jdbcType=INTEGER}, #{planname,jdbcType=VARCHAR}, #{plancontent,jdbcType=VARCHAR}, 
       #{planmotive,jdbcType=VARCHAR}, #{starttime,jdbcType=DATE}, #{endtime,jdbcType=DATE}, 
-      #{where,jdbcType=VARCHAR}, #{teacher,jdbcType=VARCHAR}, #{data,jdbcType=VARCHAR}, 
-      #{people,jdbcType=VARCHAR}, #{isdeleted,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
-      #{createperson,jdbcType=VARCHAR}, #{temp1,jdbcType=VARCHAR}, #{temp2,jdbcType=VARCHAR}, 
-      #{temp3,jdbcType=VARCHAR})
+      #{beforetime,jdbcType=VARCHAR}, #{aftertime,jdbcType=VARCHAR}, #{whereplace,jdbcType=VARCHAR}, 
+      #{teacher,jdbcType=VARCHAR}, #{data,jdbcType=VARCHAR}, #{people,jdbcType=VARCHAR}, 
+      #{isdeleted,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{createperson,jdbcType=VARCHAR}, 
+      #{temp1,jdbcType=VARCHAR}, #{temp2,jdbcType=VARCHAR}, #{temp3,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.graduation.pojo.Plan" >
     insert into plan
@@ -146,8 +151,14 @@
       <if test="endtime != null" >
         endtime,
       </if>
-      <if test="where != null" >
-        where,
+      <if test="beforetime != null" >
+        beforetime,
+      </if>
+      <if test="aftertime != null" >
+        aftertime,
+      </if>
+      <if test="whereplace != null" >
+        whereplace,
       </if>
       <if test="teacher != null" >
         teacher,
@@ -196,8 +207,14 @@
       <if test="endtime != null" >
         #{endtime,jdbcType=DATE},
       </if>
-      <if test="where != null" >
-        #{where,jdbcType=VARCHAR},
+      <if test="beforetime != null" >
+        #{beforetime,jdbcType=VARCHAR},
+      </if>
+      <if test="aftertime != null" >
+        #{aftertime,jdbcType=VARCHAR},
+      </if>
+      <if test="whereplace != null" >
+        #{whereplace,jdbcType=VARCHAR},
       </if>
       <if test="teacher != null" >
         #{teacher,jdbcType=VARCHAR},
@@ -255,8 +272,14 @@
       <if test="record.endtime != null" >
         endtime = #{record.endtime,jdbcType=DATE},
       </if>
-      <if test="record.where != null" >
-        where = #{record.where,jdbcType=VARCHAR},
+      <if test="record.beforetime != null" >
+        beforetime = #{record.beforetime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aftertime != null" >
+        aftertime = #{record.aftertime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.whereplace != null" >
+        whereplace = #{record.whereplace,jdbcType=VARCHAR},
       </if>
       <if test="record.teacher != null" >
         teacher = #{record.teacher,jdbcType=VARCHAR},
@@ -298,7 +321,9 @@
       planmotive = #{record.planmotive,jdbcType=VARCHAR},
       starttime = #{record.starttime,jdbcType=DATE},
       endtime = #{record.endtime,jdbcType=DATE},
-      where = #{record.where,jdbcType=VARCHAR},
+      beforetime = #{record.beforetime,jdbcType=VARCHAR},
+      aftertime = #{record.aftertime,jdbcType=VARCHAR},
+      whereplace = #{record.whereplace,jdbcType=VARCHAR},
       teacher = #{record.teacher,jdbcType=VARCHAR},
       data = #{record.data,jdbcType=VARCHAR},
       people = #{record.people,jdbcType=VARCHAR},
@@ -330,8 +355,14 @@
       <if test="endtime != null" >
         endtime = #{endtime,jdbcType=DATE},
       </if>
-      <if test="where != null" >
-        where = #{where,jdbcType=VARCHAR},
+      <if test="beforetime != null" >
+        beforetime = #{beforetime,jdbcType=VARCHAR},
+      </if>
+      <if test="aftertime != null" >
+        aftertime = #{aftertime,jdbcType=VARCHAR},
+      </if>
+      <if test="whereplace != null" >
+        whereplace = #{whereplace,jdbcType=VARCHAR},
       </if>
       <if test="teacher != null" >
         teacher = #{teacher,jdbcType=VARCHAR},
@@ -370,7 +401,9 @@
       planmotive = #{planmotive,jdbcType=VARCHAR},
       starttime = #{starttime,jdbcType=DATE},
       endtime = #{endtime,jdbcType=DATE},
-      where = #{where,jdbcType=VARCHAR},
+      beforetime = #{beforetime,jdbcType=VARCHAR},
+      aftertime = #{aftertime,jdbcType=VARCHAR},
+      whereplace = #{whereplace,jdbcType=VARCHAR},
       teacher = #{teacher,jdbcType=VARCHAR},
       data = #{data,jdbcType=VARCHAR},
       people = #{people,jdbcType=VARCHAR},
@@ -382,4 +415,16 @@
       temp3 = #{temp3,jdbcType=VARCHAR}
     where planid = #{planid,jdbcType=INTEGER}
   </update>
+  <select id="pageSelect" parameterType="map" resultMap="BaseResultMap">
+      select * from plan  
+       <if test="id != null" >
+       where planid=#{id,jdbcType=INTEGER} 
+       </if>
+       <if test="sort != null">
+       order by #{sort,jdbcType=VARCHAR} #{order,jdbcType=VARCHAR} limit #{page,jdbcType=INTEGER},#{rows,jdbcType=INTEGER}
+       </if>
+       <if test="sort == null">
+       order by planid desc limit #{page,jdbcType=INTEGER},#{rows,jdbcType=INTEGER}
+       </if>
+  </select>
 </mapper>

@@ -522,73 +522,213 @@ public class PlanExample {
             return (Criteria) this;
         }
 
-        public Criteria andWhereIsNull() {
-            addCriterion("where is null");
+        public Criteria andBeforetimeIsNull() {
+            addCriterion("beforetime is null");
             return (Criteria) this;
         }
 
-        public Criteria andWhereIsNotNull() {
-            addCriterion("where is not null");
+        public Criteria andBeforetimeIsNotNull() {
+            addCriterion("beforetime is not null");
             return (Criteria) this;
         }
 
-        public Criteria andWhereEqualTo(String value) {
-            addCriterion("where =", value, "where");
+        public Criteria andBeforetimeEqualTo(String value) {
+            addCriterion("beforetime =", value, "beforetime");
             return (Criteria) this;
         }
 
-        public Criteria andWhereNotEqualTo(String value) {
-            addCriterion("where <>", value, "where");
+        public Criteria andBeforetimeNotEqualTo(String value) {
+            addCriterion("beforetime <>", value, "beforetime");
             return (Criteria) this;
         }
 
-        public Criteria andWhereGreaterThan(String value) {
-            addCriterion("where >", value, "where");
+        public Criteria andBeforetimeGreaterThan(String value) {
+            addCriterion("beforetime >", value, "beforetime");
             return (Criteria) this;
         }
 
-        public Criteria andWhereGreaterThanOrEqualTo(String value) {
-            addCriterion("where >=", value, "where");
+        public Criteria andBeforetimeGreaterThanOrEqualTo(String value) {
+            addCriterion("beforetime >=", value, "beforetime");
             return (Criteria) this;
         }
 
-        public Criteria andWhereLessThan(String value) {
-            addCriterion("where <", value, "where");
+        public Criteria andBeforetimeLessThan(String value) {
+            addCriterion("beforetime <", value, "beforetime");
             return (Criteria) this;
         }
 
-        public Criteria andWhereLessThanOrEqualTo(String value) {
-            addCriterion("where <=", value, "where");
+        public Criteria andBeforetimeLessThanOrEqualTo(String value) {
+            addCriterion("beforetime <=", value, "beforetime");
             return (Criteria) this;
         }
 
-        public Criteria andWhereLike(String value) {
-            addCriterion("where like", value, "where");
+        public Criteria andBeforetimeLike(String value) {
+            addCriterion("beforetime like", value, "beforetime");
             return (Criteria) this;
         }
 
-        public Criteria andWhereNotLike(String value) {
-            addCriterion("where not like", value, "where");
+        public Criteria andBeforetimeNotLike(String value) {
+            addCriterion("beforetime not like", value, "beforetime");
             return (Criteria) this;
         }
 
-        public Criteria andWhereIn(List<String> values) {
-            addCriterion("where in", values, "where");
+        public Criteria andBeforetimeIn(List<String> values) {
+            addCriterion("beforetime in", values, "beforetime");
             return (Criteria) this;
         }
 
-        public Criteria andWhereNotIn(List<String> values) {
-            addCriterion("where not in", values, "where");
+        public Criteria andBeforetimeNotIn(List<String> values) {
+            addCriterion("beforetime not in", values, "beforetime");
             return (Criteria) this;
         }
 
-        public Criteria andWhereBetween(String value1, String value2) {
-            addCriterion("where between", value1, value2, "where");
+        public Criteria andBeforetimeBetween(String value1, String value2) {
+            addCriterion("beforetime between", value1, value2, "beforetime");
             return (Criteria) this;
         }
 
-        public Criteria andWhereNotBetween(String value1, String value2) {
-            addCriterion("where not between", value1, value2, "where");
+        public Criteria andBeforetimeNotBetween(String value1, String value2) {
+            addCriterion("beforetime not between", value1, value2, "beforetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAftertimeIsNull() {
+            addCriterion("aftertime is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAftertimeIsNotNull() {
+            addCriterion("aftertime is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAftertimeEqualTo(String value) {
+            addCriterion("aftertime =", value, "aftertime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAftertimeNotEqualTo(String value) {
+            addCriterion("aftertime <>", value, "aftertime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAftertimeGreaterThan(String value) {
+            addCriterion("aftertime >", value, "aftertime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAftertimeGreaterThanOrEqualTo(String value) {
+            addCriterion("aftertime >=", value, "aftertime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAftertimeLessThan(String value) {
+            addCriterion("aftertime <", value, "aftertime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAftertimeLessThanOrEqualTo(String value) {
+            addCriterion("aftertime <=", value, "aftertime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAftertimeLike(String value) {
+            addCriterion("aftertime like", value, "aftertime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAftertimeNotLike(String value) {
+            addCriterion("aftertime not like", value, "aftertime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAftertimeIn(List<String> values) {
+            addCriterion("aftertime in", values, "aftertime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAftertimeNotIn(List<String> values) {
+            addCriterion("aftertime not in", values, "aftertime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAftertimeBetween(String value1, String value2) {
+            addCriterion("aftertime between", value1, value2, "aftertime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAftertimeNotBetween(String value1, String value2) {
+            addCriterion("aftertime not between", value1, value2, "aftertime");
+            return (Criteria) this;
+        }
+
+        public Criteria andWhereplaceIsNull() {
+            addCriterion("whereplace is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWhereplaceIsNotNull() {
+            addCriterion("whereplace is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWhereplaceEqualTo(String value) {
+            addCriterion("whereplace =", value, "whereplace");
+            return (Criteria) this;
+        }
+
+        public Criteria andWhereplaceNotEqualTo(String value) {
+            addCriterion("whereplace <>", value, "whereplace");
+            return (Criteria) this;
+        }
+
+        public Criteria andWhereplaceGreaterThan(String value) {
+            addCriterion("whereplace >", value, "whereplace");
+            return (Criteria) this;
+        }
+
+        public Criteria andWhereplaceGreaterThanOrEqualTo(String value) {
+            addCriterion("whereplace >=", value, "whereplace");
+            return (Criteria) this;
+        }
+
+        public Criteria andWhereplaceLessThan(String value) {
+            addCriterion("whereplace <", value, "whereplace");
+            return (Criteria) this;
+        }
+
+        public Criteria andWhereplaceLessThanOrEqualTo(String value) {
+            addCriterion("whereplace <=", value, "whereplace");
+            return (Criteria) this;
+        }
+
+        public Criteria andWhereplaceLike(String value) {
+            addCriterion("whereplace like", value, "whereplace");
+            return (Criteria) this;
+        }
+
+        public Criteria andWhereplaceNotLike(String value) {
+            addCriterion("whereplace not like", value, "whereplace");
+            return (Criteria) this;
+        }
+
+        public Criteria andWhereplaceIn(List<String> values) {
+            addCriterion("whereplace in", values, "whereplace");
+            return (Criteria) this;
+        }
+
+        public Criteria andWhereplaceNotIn(List<String> values) {
+            addCriterion("whereplace not in", values, "whereplace");
+            return (Criteria) this;
+        }
+
+        public Criteria andWhereplaceBetween(String value1, String value2) {
+            addCriterion("whereplace between", value1, value2, "whereplace");
+            return (Criteria) this;
+        }
+
+        public Criteria andWhereplaceNotBetween(String value1, String value2) {
+            addCriterion("whereplace not between", value1, value2, "whereplace");
             return (Criteria) this;
         }
 

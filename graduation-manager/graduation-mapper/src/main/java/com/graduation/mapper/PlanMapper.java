@@ -1,9 +1,11 @@
 package com.graduation.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.graduation.pojo.Plan;
 import com.graduation.pojo.PlanExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface PlanMapper {
     int countByExample(PlanExample example);
@@ -17,6 +19,8 @@ public interface PlanMapper {
     int insertSelective(Plan record);
 
     List<Plan> selectByExample(PlanExample example);
+    
+    List<Plan> pageSelect(@Param("id") Integer id, @Param("page") Integer  page, @Param("rows") Integer  rows,@Param("sort") String  sort, @Param("order") String  order);
 
     Plan selectByPrimaryKey(Integer planid);
 

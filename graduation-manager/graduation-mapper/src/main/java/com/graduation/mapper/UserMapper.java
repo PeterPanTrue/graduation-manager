@@ -21,7 +21,7 @@ public interface UserMapper {
 
     List<User> selectByExample(UserExample example);
     
-    List<User> pageSelect(@Param("id") Integer id, @Param("page") Integer  page, @Param("rows") Integer  rows);
+    List<User> pageSelect(@Param("id") Integer id, @Param("page") Integer  page, @Param("rows") Integer  rows,@Param("sort") String  sort, @Param("order") String  order);
 
     User selectByPrimaryKey(Integer id);
 

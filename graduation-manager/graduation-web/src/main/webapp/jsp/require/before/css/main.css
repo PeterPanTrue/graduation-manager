@@ -1,0 +1,38 @@
+.body {
+	margin: 0;
+	padding: 0;
+}
+
+.center {
+	margin: 0 auto;
+	width: 1150px;
+	height: auto;
+}
+
+.center .show {
+	float: left;
+	width: 100%;
+}
+
+.center .show .left {
+	float: left;
+	width: 230px;
+	height: 100%;
+}
+
+.center .show .right {
+	float: left;
+	width: 915px;
+	height: 100%;
+}
+
+#main {
+	width: 915px;
+	height: 540px;
+	overflow: hidden;
+}
+
+.pic {
+	width: 915px;
+	height: 540px;
+}

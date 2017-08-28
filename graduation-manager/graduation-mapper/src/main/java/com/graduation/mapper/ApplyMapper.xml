@@ -6,6 +6,7 @@
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="sex" property="sex" jdbcType="VARCHAR" />
     <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="idcard" property="idcard" jdbcType="VARCHAR" />
     <result column="position" property="position" jdbcType="VARCHAR" />
     <result column="positionid" property="positionid" jdbcType="INTEGER" />
     <result column="department" property="department" jdbcType="VARCHAR" />
@@ -13,9 +14,9 @@
     <result column="education" property="education" jdbcType="INTEGER" />
     <result column="school" property="school" jdbcType="VARCHAR" />
     <result column="exprement" property="exprement" jdbcType="VARCHAR" />
-    <result column="phone" property="phone" jdbcType="INTEGER" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
-    <result column="time" property="time" jdbcType="DATE" />
+    <result column="applytime" property="applytime" jdbcType="DATE" />
     <result column="firstpass" property="firstpass" jdbcType="INTEGER" />
     <result column="firstcreatetime" property="firstcreatetime" jdbcType="DATE" />
     <result column="firstcreateperson" property="firstcreateperson" jdbcType="VARCHAR" />
@@ -86,9 +87,10 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    employid, name, sex, age, position, positionid, department, departmentid, education, 
-    school, exprement, phone, email, time, firstpass, firstcreatetime, firstcreateperson, 
-    secondpass, secondcreatetiem, secondcreateperson, admitted, temp1, temp2, temp3
+    employid, name, sex, age, idcard, position, positionid, department, departmentid, 
+    education, school, exprement, phone, email, applytime, firstpass, firstcreatetime, 
+    firstcreateperson, secondpass, secondcreatetiem, secondcreateperson, admitted, temp1, 
+    temp2, temp3
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.graduation.pojo.ApplyExample" >
     select
@@ -122,23 +124,23 @@
   </delete>
   <insert id="insert" parameterType="com.graduation.pojo.Apply" >
     insert into apply (employid, name, sex, 
-      age, position, positionid, 
-      department, departmentid, education, 
-      school, exprement, phone, 
-      email, time, firstpass, 
-      firstcreatetime, firstcreateperson, secondpass, 
-      secondcreatetiem, secondcreateperson, admitted, 
-      temp1, temp2, temp3
-      )
+      age, idcard, position, 
+      positionid, department, departmentid, 
+      education, school, exprement, 
+      phone, email, applytime, 
+      firstpass, firstcreatetime, firstcreateperson, 
+      secondpass, secondcreatetiem, secondcreateperson, 
+      admitted, temp1, temp2, 
+      temp3)
     values (#{employid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
-      #{age,jdbcType=INTEGER}, #{position,jdbcType=VARCHAR}, #{positionid,jdbcType=INTEGER}, 
-      #{department,jdbcType=VARCHAR}, #{departmentid,jdbcType=INTEGER}, #{education,jdbcType=INTEGER}, 
-      #{school,jdbcType=VARCHAR}, #{exprement,jdbcType=VARCHAR}, #{phone,jdbcType=INTEGER}, 
-      #{email,jdbcType=VARCHAR}, #{time,jdbcType=DATE}, #{firstpass,jdbcType=INTEGER}, 
-      #{firstcreatetime,jdbcType=DATE}, #{firstcreateperson,jdbcType=VARCHAR}, #{secondpass,jdbcType=INTEGER}, 
-      #{secondcreatetiem,jdbcType=DATE}, #{secondcreateperson,jdbcType=VARCHAR}, #{admitted,jdbcType=INTEGER}, 
-      #{temp1,jdbcType=VARCHAR}, #{temp2,jdbcType=VARCHAR}, #{temp3,jdbcType=VARCHAR}
-      )
+      #{age,jdbcType=INTEGER}, #{idcard,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
+      #{positionid,jdbcType=INTEGER}, #{department,jdbcType=VARCHAR}, #{departmentid,jdbcType=INTEGER}, 
+      #{education,jdbcType=INTEGER}, #{school,jdbcType=VARCHAR}, #{exprement,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{applytime,jdbcType=DATE}, 
+      #{firstpass,jdbcType=INTEGER}, #{firstcreatetime,jdbcType=DATE}, #{firstcreateperson,jdbcType=VARCHAR}, 
+      #{secondpass,jdbcType=INTEGER}, #{secondcreatetiem,jdbcType=DATE}, #{secondcreateperson,jdbcType=VARCHAR}, 
+      #{admitted,jdbcType=INTEGER}, #{temp1,jdbcType=VARCHAR}, #{temp2,jdbcType=VARCHAR}, 
+      #{temp3,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.graduation.pojo.Apply" >
     insert into apply
@@ -154,6 +156,9 @@
       </if>
       <if test="age != null" >
         age,
+      </if>
+      <if test="idcard != null" >
+        idcard,
       </if>
       <if test="position != null" >
         position,
@@ -182,8 +187,8 @@
       <if test="email != null" >
         email,
       </if>
-      <if test="time != null" >
-        time,
+      <if test="applytime != null" >
+        applytime,
       </if>
       <if test="firstpass != null" >
         firstpass,
@@ -229,6 +234,9 @@
       <if test="age != null" >
         #{age,jdbcType=INTEGER},
       </if>
+      <if test="idcard != null" >
+        #{idcard,jdbcType=VARCHAR},
+      </if>
       <if test="position != null" >
         #{position,jdbcType=VARCHAR},
       </if>
@@ -251,13 +259,13 @@
         #{exprement,jdbcType=VARCHAR},
       </if>
       <if test="phone != null" >
-        #{phone,jdbcType=INTEGER},
+        #{phone,jdbcType=VARCHAR},
       </if>
       <if test="email != null" >
         #{email,jdbcType=VARCHAR},
       </if>
-      <if test="time != null" >
-        #{time,jdbcType=DATE},
+      <if test="applytime != null" >
+        #{applytime,jdbcType=DATE},
       </if>
       <if test="firstpass != null" >
         #{firstpass,jdbcType=INTEGER},
@@ -312,6 +320,9 @@
       <if test="record.age != null" >
         age = #{record.age,jdbcType=INTEGER},
       </if>
+      <if test="record.idcard != null" >
+        idcard = #{record.idcard,jdbcType=VARCHAR},
+      </if>
       <if test="record.position != null" >
         position = #{record.position,jdbcType=VARCHAR},
       </if>
@@ -334,13 +345,13 @@
         exprement = #{record.exprement,jdbcType=VARCHAR},
       </if>
       <if test="record.phone != null" >
-        phone = #{record.phone,jdbcType=INTEGER},
+        phone = #{record.phone,jdbcType=VARCHAR},
       </if>
       <if test="record.email != null" >
         email = #{record.email,jdbcType=VARCHAR},
       </if>
-      <if test="record.time != null" >
-        time = #{record.time,jdbcType=DATE},
+      <if test="record.applytime != null" >
+        applytime = #{record.applytime,jdbcType=DATE},
       </if>
       <if test="record.firstpass != null" >
         firstpass = #{record.firstpass,jdbcType=INTEGER},
@@ -383,6 +394,7 @@
       name = #{record.name,jdbcType=VARCHAR},
       sex = #{record.sex,jdbcType=VARCHAR},
       age = #{record.age,jdbcType=INTEGER},
+      idcard = #{record.idcard,jdbcType=VARCHAR},
       position = #{record.position,jdbcType=VARCHAR},
       positionid = #{record.positionid,jdbcType=INTEGER},
       department = #{record.department,jdbcType=VARCHAR},
@@ -390,9 +402,9 @@
       education = #{record.education,jdbcType=INTEGER},
       school = #{record.school,jdbcType=VARCHAR},
       exprement = #{record.exprement,jdbcType=VARCHAR},
-      phone = #{record.phone,jdbcType=INTEGER},
+      phone = #{record.phone,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
-      time = #{record.time,jdbcType=DATE},
+      applytime = #{record.applytime,jdbcType=DATE},
       firstpass = #{record.firstpass,jdbcType=INTEGER},
       firstcreatetime = #{record.firstcreatetime,jdbcType=DATE},
       firstcreateperson = #{record.firstcreateperson,jdbcType=VARCHAR},
@@ -419,6 +431,9 @@
       <if test="age != null" >
         age = #{age,jdbcType=INTEGER},
       </if>
+      <if test="idcard != null" >
+        idcard = #{idcard,jdbcType=VARCHAR},
+      </if>
       <if test="position != null" >
         position = #{position,jdbcType=VARCHAR},
       </if>
@@ -441,13 +456,13 @@
         exprement = #{exprement,jdbcType=VARCHAR},
       </if>
       <if test="phone != null" >
-        phone = #{phone,jdbcType=INTEGER},
+        phone = #{phone,jdbcType=VARCHAR},
       </if>
       <if test="email != null" >
         email = #{email,jdbcType=VARCHAR},
       </if>
-      <if test="time != null" >
-        time = #{time,jdbcType=DATE},
+      <if test="applytime != null" >
+        applytime = #{applytime,jdbcType=DATE},
       </if>
       <if test="firstpass != null" >
         firstpass = #{firstpass,jdbcType=INTEGER},
@@ -487,6 +502,7 @@
     set name = #{name,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=VARCHAR},
       age = #{age,jdbcType=INTEGER},
+      idcard = #{idcard,jdbcType=VARCHAR},
       position = #{position,jdbcType=VARCHAR},
       positionid = #{positionid,jdbcType=INTEGER},
       department = #{department,jdbcType=VARCHAR},
@@ -494,9 +510,9 @@
       education = #{education,jdbcType=INTEGER},
       school = #{school,jdbcType=VARCHAR},
       exprement = #{exprement,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
-      time = #{time,jdbcType=DATE},
+      applytime = #{applytime,jdbcType=DATE},
       firstpass = #{firstpass,jdbcType=INTEGER},
       firstcreatetime = #{firstcreatetime,jdbcType=DATE},
       firstcreateperson = #{firstcreateperson,jdbcType=VARCHAR},
@@ -509,4 +525,19 @@
       temp3 = #{temp3,jdbcType=VARCHAR}
     where employid = #{employid,jdbcType=INTEGER}
   </update>
+  <select id="pageSelect" parameterType="map" resultMap="BaseResultMap">
+      select * from apply 
+       <if test="id != null" >
+       where employid=#{id,jdbcType=INTEGER} 
+       </if>
+       <if test="sort != null">
+       order by #{sort,jdbcType=VARCHAR} #{order,jdbcType=VARCHAR} limit #{page,jdbcType=INTEGER},#{rows,jdbcType=INTEGER}
+       </if>
+       <if test="sort == null">
+       order by employid desc limit #{page,jdbcType=INTEGER},#{rows,jdbcType=INTEGER}
+       </if>
+  </select>
+  <select id="pageSelectByTemp" parameterType="map" resultMap="BaseResultMap">
+      select * from apply where admitted=1 limit #{page,jdbcType=INTEGER},#{rows,jdbcType=INTEGER}
+  </select>
 </mapper>

@@ -15,7 +15,11 @@ public class Plan {
 
     private Date endtime;
 
-    private String where;
+    private String beforetime;
+
+    private String aftertime;
+
+    private String whereplace;
 
     private String teacher;
 
@@ -83,12 +87,28 @@ public class Plan {
         this.endtime = endtime;
     }
 
-    public String getWhere() {
-        return where;
+    public String getBeforetime() {
+        return beforetime;
     }
 
-    public void setWhere(String where) {
-        this.where = where == null ? null : where.trim();
+    public void setBeforetime(String beforetime) {
+        this.beforetime = beforetime == null ? null : beforetime.trim();
+    }
+
+    public String getAftertime() {
+        return aftertime;
+    }
+
+    public void setAftertime(String aftertime) {
+        this.aftertime = aftertime == null ? null : aftertime.trim();
+    }
+
+    public String getWhereplace() {
+        return whereplace;
+    }
+
+    public void setWhereplace(String whereplace) {
+        this.whereplace = whereplace == null ? null : whereplace.trim();
     }
 
     public String getTeacher() {

@@ -28,10 +28,10 @@
         <li class="nav-item dl-selected"><div class="nav-item-inner nav-home">员工平台</div></li>
         <li class="nav-item"><div class="nav-item-inner nav-order">招聘管理</div></li>
 		<li class="nav-item"><div class="nav-item-inner nav-inventory">人事管理</div></li>
-        <li class="nav-item"><div class="nav-item-inner nav-inventory">培训管理</div></li>
-        <li class="nav-item"><div class="nav-item-inner nav-supplier">考勤管理</div></li>
-        <li class="nav-item"><div class="nav-item-inner nav-order">薪酬福利</div></li>
-		<li class="nav-item"><div class="nav-item-inner nav-inventory">企业文化</div></li>
+        <li class="nav-item"><div class="nav-item-inner nav-order">培训管理</div></li>
+        <li class="nav-item"><div class="nav-item-inner nav-supplier">薪酬福利</div></li>
+		<li class="nav-item"><div class="nav-item-inner nav-supplier">企业文化</div></li>
+		<li class="nav-item"><div class="nav-item-inner nav-inventory">审批流程</div></li>
         <li class="nav-item"><div class="nav-item-inner nav-supplier">系统管理</div></li>
       </ul>
     </div>
@@ -52,7 +52,7 @@
               text:'员工基本信息',
               items:[
                 {id:'code',text:'首页公告',href:'http://baidu.com',closeable : false},
-                {id:'main-menu',text:'个人信息',href:'/employee/index.htm'},
+                {id:'main-menu',text:'个人信息',href:'/member/list.htm'},
                 {id:'second-menu',text:'工资发放记录',href:'main/second-menu.html'},
                 {id:'dyna-menu',text:'福利待遇',href:'main/dyna-menu.html'}
               ]
@@ -67,7 +67,7 @@
             },{
               text:'其他',
               items:[
-                {id:'resource',text:'企业文化',href:'main/resource.html'},
+                {id:'resource',text:'其他',href:'main/resource.html'},
               ]
             }]
           },{
@@ -75,15 +75,12 @@
             menu:[{
                 text:'招聘管理',
                 items:[
-                  {id:'code',text:'编写招聘计划',href:'form/code.html'},
-                  {id:'example',text:'招聘计划管理',href:'form/example.html'}
+                  {id:'code',text:'编写招聘计划',href:'/require/person/list.htm'}
                 ]
               },{
                 text:'应聘管理',
                 items:[
-                  {id:'success',text:'应聘人员管理',href:'form/success.html'},
-                  {id:'fail',text:'初始通过管理',href:'form/fail.html'},
-                  {id:'fail',text:'面试通过管理',href:'form/fail.html'}
+                  {id:'success',text:'应聘人员管理',href:'/apply/apply/list.htm'}
                 ]
               }]
           },{
@@ -91,64 +88,62 @@
             menu:[{
                 text:'人事管理',
                 items:[
-                  {id:'code',text:'人员录入',href:'search/code.html'},
-                  {id:'example',text:'人员信息管理',href:'search/example.html'},
-                  {id:'example-dialog',text:'人事调动',href:'search/example-dialog.html'}
+                  {id:'code',text:'人员录入',href:'/employee/person/list.htm'},
+                  {id:'example',text:'人员信息管理',href:'/employee/personinfo/list.htm'},
+                  {id:'example-dialog',text:'人事调动',href:'/change/person/list.htm'}
                 ]
               },{
+                text:'招聘人员',
+                items:[
+                  {id:'code',text:'待录入',href:'/employee/apply/list.htm'}
+              
+                ]
+              }
+              ,{
                 text : '考勤管理',
                 items : [
-                  {id : 'tab1',text : '考勤记录',href : 'search/tab.html'},
-                  {id : 'tab2',text : '奖惩信息管理',href : 'search/tab.html'},
-                  {id : 'tab3',text : '使用tab过滤',href : 'search/tab.html'},
-                  {id : 'tab4',text : '使用tab过滤',href : 'search/tab.html'}
+                  {id : 'tab1',text : '考勤记录',href : 'search/tab.html'}
                 ]
               }]
           },{
             id:'myown',
             menu:[{
-                text:'自己的页面',
+                text:'培训管理',
                 items:[
-                  {id:'code',text:'搜索页面代码',href:'search/code.html'},
-                  {id:'example',text:'搜索页面示例',href:'search/example.html'},
-                  {id:'example-dialog',text:'搜索页面编辑示例',href:'search/example-dialog.html'},
-                  {id:'introduce',text:'搜索页面简介',href:'search/introduce.html'}, 
-                  {id:'config',text:'搜索配置',href:'search/config.html'}
+                  {id:'code',text:'培训计划',href:'/plan/plan/list.htm'}
                 ]
               },{
-                text : '更多示例',
+                text : '其他',
                 items : [
-                  {id : 'tab',text : '使用tab过滤',href : 'search/tab.html'}
-                ]
-              }]
-          },{
-            id:'detail',
-            menu:[{
-                text:'详情页面',
-                items:[
-                  {id:'code',text:'详情页面代码',href:'detail/code.html'},
-                  {id:'example',text:'详情页面示例',href:'detail/example.html'},
-                  {id:'introduce',text:'详情页面简介',href:'detail/introduce.html'}
+                  {id : 'tab',text : '其他',href : 'search/tab.html'}
                 ]
               }]
           },{
             id:'each',
             menu:[{
-                text:'详情页面',
+                text:'薪酬福利',
                 items:[
-                  {id:'code',text:'详情页面代码',href:'detail/code.html'},
-                  {id:'example',text:'详情页面示例',href:'detail/example.html'},
-                  {id:'introduce',text:'详情页面简介',href:'detail/introduce.html'}
+                  {id:'code',text:'基本工资管理',href:'detail/code.html'},
+                  {id:'example',text:'奖惩管理',href:'detail/example.html'},
+                  {id:'introduce',text:'待遇福利',href:'detail/introduce.html'}
                 ]
               }]
           },{
             id:'somethong',
             menu:[{
-                text:'详情页面',
+                text:'企业文化',
                 items:[
-                  {id:'code',text:'详情页面代码',href:'detail/code.html'},
-                  {id:'example',text:'详情页面示例',href:'detail/example.html'},
-                  {id:'introduce',text:'详情页面简介',href:'detail/introduce.html'}
+                  {id:'code',text:'公告栏目',href:'detail/code.html'},
+                  {id:'example',text:'前台文化模块',href:'detail/example.html'}
+                ]
+              }]
+          },{
+            id:'somethong2',
+            menu:[{
+                text:'计划审批',
+                items:[
+                  {id:'code',text:'招聘计划方案',href:'/header/person/list.htm'},
+                  {id:'example',text:'其他',href:'detail/example.html'}
                 ]
               }]
           },{
@@ -156,10 +151,10 @@
             menu:[{
                 text:'基本管理',
                 items:[
-                  {id:'code',text:'人员帐号生成',href:'/jsp/admin/user/list.jsp'},
-                  {id:'example',text:'角色权限的制定',href:'/admin/makerole.htm'},
-                  {id:'introduce',text:'部门的制定',href:'detail/introduce.html'},
-                  {id:'introduce',text:'岗位的制定',href:'detail/introduce.html'}
+                  {id:'code',text:'人员帐号管理',href:'/admin/user/list.htm'},
+                  {id:'example',text:'角色权限的制定',href:'/admin/role/list.htm'},
+                  {id:'introduce',text:'部门的制定',href:'/admin/department/list.htm'},
+                  {id:'introduce',text:'岗位的制定',href:'/admin/position/list.htm'}
                 ]
               },{
                 text : '数据管理',

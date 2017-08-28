@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.graduation.mapper.DepartmentMapper;
 import com.graduation.pojo.Department;
 import com.graduation.pojo.DepartmentExample;
+import com.graduation.pojo.PositionExample;
 import com.graduation.pojo.Role;
 import com.graduation.pojo.RoleExample;
 import com.graduation.pojo.DepartmentExample.Criteria;
@@ -54,5 +55,17 @@ public class DepartmentServiceImpl implements DepartmentService{
 	public void update(Department t) {
 		mapper.updateByPrimaryKey(t);
 	}
+	
+	@Override
+	public int count() {
+		DepartmentExample example=new DepartmentExample();
+		return mapper.countByExample(example);
+	}
 
+	@Override
+	public List<Department> pageSelect(Integer id, Integer page, Integer rows,
+			String sort, String order) {
+		List<Department> list=mapper.pageSelect(id,(page-1)*rows,rows,sort,order);
+		return list;
+	}
 }

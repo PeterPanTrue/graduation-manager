@@ -2,6 +2,7 @@ package com.graduation.mapper;
 
 import com.graduation.pojo.Department;
 import com.graduation.pojo.DepartmentExample;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -17,6 +18,8 @@ public interface DepartmentMapper {
     int insertSelective(Department record);
 
     List<Department> selectByExample(DepartmentExample example);
+    
+    List<Department> pageSelect(@Param("id") Integer id, @Param("page") Integer  page, @Param("rows") Integer  rows,@Param("sort") String  sort, @Param("order") String  order);
 
     Department selectByPrimaryKey(Integer departmentid);
 

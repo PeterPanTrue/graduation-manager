@@ -1,9 +1,11 @@
 package com.graduation.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.graduation.pojo.Apply;
 import com.graduation.pojo.ApplyExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface ApplyMapper {
     int countByExample(ApplyExample example);
@@ -17,6 +19,10 @@ public interface ApplyMapper {
     int insertSelective(Apply record);
 
     List<Apply> selectByExample(ApplyExample example);
+    
+    List<Apply> pageSelect(@Param("id") Integer id, @Param("page") Integer  page, @Param("rows") Integer  rows,@Param("sort") String  sort, @Param("order") String  order);
+    
+    List<Apply> pageSelectByTemp(@Param("id") Integer id, @Param("page") Integer  page, @Param("rows") Integer  rows);
 
     Apply selectByPrimaryKey(Integer employid);
 

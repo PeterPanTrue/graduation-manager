@@ -1,8 +1,6 @@
 package com.graduation.service.impl;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,8 +58,24 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public List<User> pageSelect() {
-		List<User> list=mapper.pageSelect(null,0,20);
+	public List<User> pageSelect(Integer id,Integer page,Integer rows,String sort,
+			String order) {
+		List<User> list=mapper.pageSelect(id,(page-1)*rows,rows,sort,order);
+		return list;
+	}
+
+	@Override
+	public int count() {
+		UserExample example=new UserExample();
+		return mapper.countByExample(example);
+	}
+
+	@Override
+	public List<User> getUserByName() {
+		UserExample example=new UserExample();
+		Criteria criteria=example.createCriteria();
+		criteria.andIsdeletedEqualTo(1);
+		List<User> list=mapper.selectByExample(example);
 		return list;
 	}
 

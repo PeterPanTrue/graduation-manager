@@ -57,7 +57,18 @@ public class RoleServiceImpl implements RoleService{
 
 
 
+	@Override
+	public int count() {
+		RoleExample example=new RoleExample();
+		return mapper.countByExample(example);
+	}
 
+	@Override
+	public List<Role> pageSelect(Integer id, Integer page, Integer rows,
+			String sort, String order) {
+		List<Role> list=mapper.pageSelect(id,(page-1)*rows,rows,sort,order);
+		return list;
+	}
 	
 
 }

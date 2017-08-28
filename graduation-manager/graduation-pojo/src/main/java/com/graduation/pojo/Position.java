@@ -5,7 +5,7 @@ public class Position {
 
     private String name;
 
-    private Integer departmentid;
+    private String department;
 
     private String description;
 
@@ -31,12 +31,12 @@ public class Position {
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getDepartmentid() {
-        return departmentid;
+    public String getDepartment() {
+        return department;
     }
 
-    public void setDepartmentid(Integer departmentid) {
-        this.departmentid = departmentid;
+    public void setDepartment(String department) {
+        this.department = department == null ? null : department.trim();
     }
 
     public String getDescription() {

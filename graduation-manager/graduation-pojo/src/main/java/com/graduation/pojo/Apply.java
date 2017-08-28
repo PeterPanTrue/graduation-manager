@@ -11,6 +11,8 @@ public class Apply {
 
     private Integer age;
 
+    private String idcard;
+
     private String position;
 
     private Integer positionid;
@@ -25,11 +27,11 @@ public class Apply {
 
     private String exprement;
 
-    private Integer phone;
+    private String phone;
 
     private String email;
 
-    private Date time;
+    private Date applytime;
 
     private Integer firstpass;
 
@@ -81,6 +83,14 @@ public class Apply {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public String getIdcard() {
+        return idcard;
+    }
+
+    public void setIdcard(String idcard) {
+        this.idcard = idcard == null ? null : idcard.trim();
     }
 
     public String getPosition() {
@@ -139,12 +149,12 @@ public class Apply {
         this.exprement = exprement == null ? null : exprement.trim();
     }
 
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
-        this.phone = phone;
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
     }
 
     public String getEmail() {
@@ -155,12 +165,12 @@ public class Apply {
         this.email = email == null ? null : email.trim();
     }
 
-    public Date getTime() {
-        return time;
+    public Date getApplytime() {
+        return applytime;
     }
 
-    public void setTime(Date time) {
-        this.time = time;
+    public void setApplytime(Date applytime) {
+        this.applytime = applytime;
     }
 
     public Integer getFirstpass() {

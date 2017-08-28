@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.graduation.pojo.Position" >
     <id column="positionid" property="positionid" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="departmentid" property="departmentid" jdbcType="INTEGER" />
+    <result column="department" property="department" jdbcType="VARCHAR" />
     <result column="description" property="description" jdbcType="VARCHAR" />
     <result column="temp1" property="temp1" jdbcType="VARCHAR" />
     <result column="temp2" property="temp2" jdbcType="VARCHAR" />
@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    positionid, name, departmentid, description, temp1, temp2, temp3
+    positionid, name, department, description, temp1, temp2, temp3
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.graduation.pojo.PositionExample" >
     select
@@ -102,10 +102,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.graduation.pojo.Position" >
-    insert into position (positionid, name, departmentid, 
+    insert into position (positionid, name, department, 
       description, temp1, temp2, 
       temp3)
-    values (#{positionid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{departmentid,jdbcType=INTEGER}, 
+    values (#{positionid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, 
       #{description,jdbcType=VARCHAR}, #{temp1,jdbcType=VARCHAR}, #{temp2,jdbcType=VARCHAR}, 
       #{temp3,jdbcType=VARCHAR})
   </insert>
@@ -118,8 +118,8 @@
       <if test="name != null" >
         name,
       </if>
-      <if test="departmentid != null" >
-        departmentid,
+      <if test="department != null" >
+        department,
       </if>
       <if test="description != null" >
         description,
@@ -141,8 +141,8 @@
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="departmentid != null" >
-        #{departmentid,jdbcType=INTEGER},
+      <if test="department != null" >
+        #{department,jdbcType=VARCHAR},
       </if>
       <if test="description != null" >
         #{description,jdbcType=VARCHAR},
@@ -173,8 +173,8 @@
       <if test="record.name != null" >
         name = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.departmentid != null" >
-        departmentid = #{record.departmentid,jdbcType=INTEGER},
+      <if test="record.department != null" >
+        department = #{record.department,jdbcType=VARCHAR},
       </if>
       <if test="record.description != null" >
         description = #{record.description,jdbcType=VARCHAR},
@@ -197,7 +197,7 @@
     update position
     set positionid = #{record.positionid,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
-      departmentid = #{record.departmentid,jdbcType=INTEGER},
+      department = #{record.department,jdbcType=VARCHAR},
       description = #{record.description,jdbcType=VARCHAR},
       temp1 = #{record.temp1,jdbcType=VARCHAR},
       temp2 = #{record.temp2,jdbcType=VARCHAR},
@@ -212,8 +212,8 @@
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="departmentid != null" >
-        departmentid = #{departmentid,jdbcType=INTEGER},
+      <if test="department != null" >
+        department = #{department,jdbcType=VARCHAR},
       </if>
       <if test="description != null" >
         description = #{description,jdbcType=VARCHAR},
@@ -233,11 +233,37 @@
   <update id="updateByPrimaryKey" parameterType="com.graduation.pojo.Position" >
     update position
     set name = #{name,jdbcType=VARCHAR},
-      departmentid = #{departmentid,jdbcType=INTEGER},
+      department = #{department,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
       temp1 = #{temp1,jdbcType=VARCHAR},
       temp2 = #{temp2,jdbcType=VARCHAR},
       temp3 = #{temp3,jdbcType=VARCHAR}
     where positionid = #{positionid,jdbcType=INTEGER}
   </update>
+  <select id="pageSelect" parameterType="map" resultMap="BaseResultMap">
+      select * from position 
+       <if test="id != null" >
+       where positionid=#{id,jdbcType=INTEGER} 
+       </if>
+       <if test="sort != null">
+       order by #{sort,jdbcType=VARCHAR} #{order,jdbcType=VARCHAR} limit #{page,jdbcType=INTEGER},#{rows,jdbcType=INTEGER}
+       </if>
+       <if test="sort == null">
+       limit #{page,jdbcType=INTEGER},#{rows,jdbcType=INTEGER}
+       </if>
+  </select>
+  <select id="pageSelectByDepartment" parameterType="map" resultMap="BaseResultMap">
+      select * from position 
+       <if test="department != null" >
+	       <if test="department != ''" >
+	           where department=#{department,jdbcType=VARCHAR} 
+	       </if>
+       </if>
+       <if test="sort != null">
+       order by #{sort,jdbcType=VARCHAR} #{order,jdbcType=VARCHAR} limit #{page,jdbcType=INTEGER},#{rows,jdbcType=INTEGER}
+       </if>
+       <if test="sort == null">
+       order by positionid desc limit #{page,jdbcType=INTEGER},#{rows,jdbcType=INTEGER}
+       </if>
+  </select>
 </mapper>

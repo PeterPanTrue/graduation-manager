@@ -132,63 +132,63 @@ public class EmployeeExample {
             addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
-        public Criteria andMemberidIsNull() {
-            addCriterion("memberid is null");
+        public Criteria andIdIsNull() {
+            addCriterion("id is null");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidIsNotNull() {
-            addCriterion("memberid is not null");
+        public Criteria andIdIsNotNull() {
+            addCriterion("id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidEqualTo(Integer value) {
-            addCriterion("memberid =", value, "memberid");
+        public Criteria andIdEqualTo(Integer value) {
+            addCriterion("id =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidNotEqualTo(Integer value) {
-            addCriterion("memberid <>", value, "memberid");
+        public Criteria andIdNotEqualTo(Integer value) {
+            addCriterion("id <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidGreaterThan(Integer value) {
-            addCriterion("memberid >", value, "memberid");
+        public Criteria andIdGreaterThan(Integer value) {
+            addCriterion("id >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("memberid >=", value, "memberid");
+        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("id >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidLessThan(Integer value) {
-            addCriterion("memberid <", value, "memberid");
+        public Criteria andIdLessThan(Integer value) {
+            addCriterion("id <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidLessThanOrEqualTo(Integer value) {
-            addCriterion("memberid <=", value, "memberid");
+        public Criteria andIdLessThanOrEqualTo(Integer value) {
+            addCriterion("id <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidIn(List<Integer> values) {
-            addCriterion("memberid in", values, "memberid");
+        public Criteria andIdIn(List<Integer> values) {
+            addCriterion("id in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidNotIn(List<Integer> values) {
-            addCriterion("memberid not in", values, "memberid");
+        public Criteria andIdNotIn(List<Integer> values) {
+            addCriterion("id not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidBetween(Integer value1, Integer value2) {
-            addCriterion("memberid between", value1, value2, "memberid");
+        public Criteria andIdBetween(Integer value1, Integer value2) {
+            addCriterion("id between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidNotBetween(Integer value1, Integer value2) {
-            addCriterion("memberid not between", value1, value2, "memberid");
+        public Criteria andIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("id not between", value1, value2, "id");
             return (Criteria) this;
         }
 
@@ -1122,63 +1122,63 @@ public class EmployeeExample {
             return (Criteria) this;
         }
 
-        public Criteria andForeignIsNull() {
-            addCriterion("foreign is null");
+        public Criteria andEnglishIsNull() {
+            addCriterion("english is null");
             return (Criteria) this;
         }
 
-        public Criteria andForeignIsNotNull() {
-            addCriterion("foreign is not null");
+        public Criteria andEnglishIsNotNull() {
+            addCriterion("english is not null");
             return (Criteria) this;
         }
 
-        public Criteria andForeignEqualTo(Integer value) {
-            addCriterion("foreign =", value, "foreign");
+        public Criteria andEnglishEqualTo(Integer value) {
+            addCriterion("english =", value, "english");
             return (Criteria) this;
         }
 
-        public Criteria andForeignNotEqualTo(Integer value) {
-            addCriterion("foreign <>", value, "foreign");
+        public Criteria andEnglishNotEqualTo(Integer value) {
+            addCriterion("english <>", value, "english");
             return (Criteria) this;
         }
 
-        public Criteria andForeignGreaterThan(Integer value) {
-            addCriterion("foreign >", value, "foreign");
+        public Criteria andEnglishGreaterThan(Integer value) {
+            addCriterion("english >", value, "english");
             return (Criteria) this;
         }
 
-        public Criteria andForeignGreaterThanOrEqualTo(Integer value) {
-            addCriterion("foreign >=", value, "foreign");
+        public Criteria andEnglishGreaterThanOrEqualTo(Integer value) {
+            addCriterion("english >=", value, "english");
             return (Criteria) this;
         }
 
-        public Criteria andForeignLessThan(Integer value) {
-            addCriterion("foreign <", value, "foreign");
+        public Criteria andEnglishLessThan(Integer value) {
+            addCriterion("english <", value, "english");
             return (Criteria) this;
         }
 
-        public Criteria andForeignLessThanOrEqualTo(Integer value) {
-            addCriterion("foreign <=", value, "foreign");
+        public Criteria andEnglishLessThanOrEqualTo(Integer value) {
+            addCriterion("english <=", value, "english");
             return (Criteria) this;
         }
 
-        public Criteria andForeignIn(List<Integer> values) {
-            addCriterion("foreign in", values, "foreign");
+        public Criteria andEnglishIn(List<Integer> values) {
+            addCriterion("english in", values, "english");
             return (Criteria) this;
         }
 
-        public Criteria andForeignNotIn(List<Integer> values) {
-            addCriterion("foreign not in", values, "foreign");
+        public Criteria andEnglishNotIn(List<Integer> values) {
+            addCriterion("english not in", values, "english");
             return (Criteria) this;
         }
 
-        public Criteria andForeignBetween(Integer value1, Integer value2) {
-            addCriterion("foreign between", value1, value2, "foreign");
+        public Criteria andEnglishBetween(Integer value1, Integer value2) {
+            addCriterion("english between", value1, value2, "english");
             return (Criteria) this;
         }
 
-        public Criteria andForeignNotBetween(Integer value1, Integer value2) {
-            addCriterion("foreign not between", value1, value2, "foreign");
+        public Criteria andEnglishNotBetween(Integer value1, Integer value2) {
+            addCriterion("english not between", value1, value2, "english");
             return (Criteria) this;
         }
 
