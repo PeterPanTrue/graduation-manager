@@ -9,6 +9,10 @@ public class Salary {
 
     private String membername;
 
+    private String position;
+
+    private String department;
+
     private String base;
 
     private String eat;
@@ -23,7 +27,7 @@ public class Salary {
 
     private String total;
 
-    private Date time;
+    private Date givetime;
 
     private Integer isdeleted;
 
@@ -59,6 +63,22 @@ public class Salary {
 
     public void setMembername(String membername) {
         this.membername = membername == null ? null : membername.trim();
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position == null ? null : position.trim();
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department == null ? null : department.trim();
     }
 
     public String getBase() {
@@ -117,12 +137,12 @@ public class Salary {
         this.total = total == null ? null : total.trim();
     }
 
-    public Date getTime() {
-        return time;
+    public Date getGivetime() {
+        return givetime;
     }
 
-    public void setTime(Date time) {
-        this.time = time;
+    public void setGivetime(Date givetime) {
+        this.givetime = givetime;
     }
 
     public Integer getIsdeleted() {

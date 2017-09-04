@@ -28,7 +28,7 @@
 	<table id="dg" title="用户管理" class="easyui-datagrid"
 		style="width:100%;height:480px;" url="/admin/listUser.htm" idField="id"
 		toolbar="#toolbar" rownumbers="true" fitColumns="true" singleSelect="false"
-		pagination="true">
+		pagination="true" >
 		<thead>
 			<tr>
 				<th field="id" width="30" sortable="true">员工工号</th>

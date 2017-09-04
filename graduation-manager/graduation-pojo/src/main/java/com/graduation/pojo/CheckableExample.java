@@ -5,14 +5,14 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-public class CheckExample {
+public class CheckableExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public CheckExample() {
+    public CheckableExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -262,113 +262,123 @@ public class CheckExample {
             return (Criteria) this;
         }
 
-        public Criteria andMembernameEqualTo(Integer value) {
+        public Criteria andMembernameEqualTo(String value) {
             addCriterion("membername =", value, "membername");
             return (Criteria) this;
         }
 
-        public Criteria andMembernameNotEqualTo(Integer value) {
+        public Criteria andMembernameNotEqualTo(String value) {
             addCriterion("membername <>", value, "membername");
             return (Criteria) this;
         }
 
-        public Criteria andMembernameGreaterThan(Integer value) {
+        public Criteria andMembernameGreaterThan(String value) {
             addCriterion("membername >", value, "membername");
             return (Criteria) this;
         }
 
-        public Criteria andMembernameGreaterThanOrEqualTo(Integer value) {
+        public Criteria andMembernameGreaterThanOrEqualTo(String value) {
             addCriterion("membername >=", value, "membername");
             return (Criteria) this;
         }
 
-        public Criteria andMembernameLessThan(Integer value) {
+        public Criteria andMembernameLessThan(String value) {
             addCriterion("membername <", value, "membername");
             return (Criteria) this;
         }
 
-        public Criteria andMembernameLessThanOrEqualTo(Integer value) {
+        public Criteria andMembernameLessThanOrEqualTo(String value) {
             addCriterion("membername <=", value, "membername");
             return (Criteria) this;
         }
 
-        public Criteria andMembernameIn(List<Integer> values) {
+        public Criteria andMembernameLike(String value) {
+            addCriterion("membername like", value, "membername");
+            return (Criteria) this;
+        }
+
+        public Criteria andMembernameNotLike(String value) {
+            addCriterion("membername not like", value, "membername");
+            return (Criteria) this;
+        }
+
+        public Criteria andMembernameIn(List<String> values) {
             addCriterion("membername in", values, "membername");
             return (Criteria) this;
         }
 
-        public Criteria andMembernameNotIn(List<Integer> values) {
+        public Criteria andMembernameNotIn(List<String> values) {
             addCriterion("membername not in", values, "membername");
             return (Criteria) this;
         }
 
-        public Criteria andMembernameBetween(Integer value1, Integer value2) {
+        public Criteria andMembernameBetween(String value1, String value2) {
             addCriterion("membername between", value1, value2, "membername");
             return (Criteria) this;
         }
 
-        public Criteria andMembernameNotBetween(Integer value1, Integer value2) {
+        public Criteria andMembernameNotBetween(String value1, String value2) {
             addCriterion("membername not between", value1, value2, "membername");
             return (Criteria) this;
         }
 
-        public Criteria andTimeIsNull() {
-            addCriterion("time is null");
+        public Criteria andChecktimeIsNull() {
+            addCriterion("checktime is null");
             return (Criteria) this;
         }
 
-        public Criteria andTimeIsNotNull() {
-            addCriterion("time is not null");
+        public Criteria andChecktimeIsNotNull() {
+            addCriterion("checktime is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTimeEqualTo(Date value) {
-            addCriterionForJDBCDate("time =", value, "time");
+        public Criteria andChecktimeEqualTo(Date value) {
+            addCriterionForJDBCDate("checktime =", value, "checktime");
             return (Criteria) this;
         }
 
-        public Criteria andTimeNotEqualTo(Date value) {
-            addCriterionForJDBCDate("time <>", value, "time");
+        public Criteria andChecktimeNotEqualTo(Date value) {
+            addCriterionForJDBCDate("checktime <>", value, "checktime");
             return (Criteria) this;
         }
 
-        public Criteria andTimeGreaterThan(Date value) {
-            addCriterionForJDBCDate("time >", value, "time");
+        public Criteria andChecktimeGreaterThan(Date value) {
+            addCriterionForJDBCDate("checktime >", value, "checktime");
             return (Criteria) this;
         }
 
-        public Criteria andTimeGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("time >=", value, "time");
+        public Criteria andChecktimeGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("checktime >=", value, "checktime");
             return (Criteria) this;
         }
 
-        public Criteria andTimeLessThan(Date value) {
-            addCriterionForJDBCDate("time <", value, "time");
+        public Criteria andChecktimeLessThan(Date value) {
+            addCriterionForJDBCDate("checktime <", value, "checktime");
             return (Criteria) this;
         }
 
-        public Criteria andTimeLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("time <=", value, "time");
+        public Criteria andChecktimeLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("checktime <=", value, "checktime");
             return (Criteria) this;
         }
 
-        public Criteria andTimeIn(List<Date> values) {
-            addCriterionForJDBCDate("time in", values, "time");
+        public Criteria andChecktimeIn(List<Date> values) {
+            addCriterionForJDBCDate("checktime in", values, "checktime");
             return (Criteria) this;
         }
 
-        public Criteria andTimeNotIn(List<Date> values) {
-            addCriterionForJDBCDate("time not in", values, "time");
+        public Criteria andChecktimeNotIn(List<Date> values) {
+            addCriterionForJDBCDate("checktime not in", values, "checktime");
             return (Criteria) this;
         }
 
-        public Criteria andTimeBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("time between", value1, value2, "time");
+        public Criteria andChecktimeBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("checktime between", value1, value2, "checktime");
             return (Criteria) this;
         }
 
-        public Criteria andTimeNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("time not between", value1, value2, "time");
+        public Criteria andChecktimeNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("checktime not between", value1, value2, "checktime");
             return (Criteria) this;
         }
 
@@ -432,63 +442,63 @@ public class CheckExample {
             return (Criteria) this;
         }
 
-        public Criteria andLeaveIsNull() {
-            addCriterion("leave is null");
+        public Criteria andAleaveIsNull() {
+            addCriterion("aleave is null");
             return (Criteria) this;
         }
 
-        public Criteria andLeaveIsNotNull() {
-            addCriterion("leave is not null");
+        public Criteria andAleaveIsNotNull() {
+            addCriterion("aleave is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLeaveEqualTo(Integer value) {
-            addCriterion("leave =", value, "leave");
+        public Criteria andAleaveEqualTo(Integer value) {
+            addCriterion("aleave =", value, "aleave");
             return (Criteria) this;
         }
 
-        public Criteria andLeaveNotEqualTo(Integer value) {
-            addCriterion("leave <>", value, "leave");
+        public Criteria andAleaveNotEqualTo(Integer value) {
+            addCriterion("aleave <>", value, "aleave");
             return (Criteria) this;
         }
 
-        public Criteria andLeaveGreaterThan(Integer value) {
-            addCriterion("leave >", value, "leave");
+        public Criteria andAleaveGreaterThan(Integer value) {
+            addCriterion("aleave >", value, "aleave");
             return (Criteria) this;
         }
 
-        public Criteria andLeaveGreaterThanOrEqualTo(Integer value) {
-            addCriterion("leave >=", value, "leave");
+        public Criteria andAleaveGreaterThanOrEqualTo(Integer value) {
+            addCriterion("aleave >=", value, "aleave");
             return (Criteria) this;
         }
 
-        public Criteria andLeaveLessThan(Integer value) {
-            addCriterion("leave <", value, "leave");
+        public Criteria andAleaveLessThan(Integer value) {
+            addCriterion("aleave <", value, "aleave");
             return (Criteria) this;
         }
 
-        public Criteria andLeaveLessThanOrEqualTo(Integer value) {
-            addCriterion("leave <=", value, "leave");
+        public Criteria andAleaveLessThanOrEqualTo(Integer value) {
+            addCriterion("aleave <=", value, "aleave");
             return (Criteria) this;
         }
 
-        public Criteria andLeaveIn(List<Integer> values) {
-            addCriterion("leave in", values, "leave");
+        public Criteria andAleaveIn(List<Integer> values) {
+            addCriterion("aleave in", values, "aleave");
             return (Criteria) this;
         }
 
-        public Criteria andLeaveNotIn(List<Integer> values) {
-            addCriterion("leave not in", values, "leave");
+        public Criteria andAleaveNotIn(List<Integer> values) {
+            addCriterion("aleave not in", values, "aleave");
             return (Criteria) this;
         }
 
-        public Criteria andLeaveBetween(Integer value1, Integer value2) {
-            addCriterion("leave between", value1, value2, "leave");
+        public Criteria andAleaveBetween(Integer value1, Integer value2) {
+            addCriterion("aleave between", value1, value2, "aleave");
             return (Criteria) this;
         }
 
-        public Criteria andLeaveNotBetween(Integer value1, Integer value2) {
-            addCriterion("leave not between", value1, value2, "leave");
+        public Criteria andAleaveNotBetween(Integer value1, Integer value2) {
+            addCriterion("aleave not between", value1, value2, "aleave");
             return (Criteria) this;
         }
 

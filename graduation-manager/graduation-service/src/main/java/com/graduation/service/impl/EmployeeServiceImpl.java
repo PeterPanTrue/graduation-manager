@@ -2,6 +2,7 @@ package com.graduation.service.impl;
 
 import java.util.List;
 
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import com.graduation.pojo.Employee;
 import com.graduation.pojo.EmployeeExample;
 import com.graduation.pojo.EmployeeExample.Criteria;
 import com.graduation.service.EmployeeService;
+import com.graduation.utils.WriteEmployeeExcel;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService{
@@ -71,6 +73,18 @@ public class EmployeeServiceImpl implements EmployeeService{
 	@Override
 	public List<Employee> pageSelect(Integer id, Integer page, Integer rows,
 			String sort, String order) {
+		return null;
+	}
+
+	@Override
+	public HSSFWorkbook writeExcel() {
+		EmployeeExample example=new EmployeeExample();
+		List<Employee> list=mapper.selectByExample(example);
+		try {
+			return WriteEmployeeExcel.writeExcel(list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 }

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.graduation.mapper.CheckMapper" >
-  <resultMap id="BaseResultMap" type="com.graduation.pojo.Check" >
+<mapper namespace="com.graduation.mapper.CheckableMapper" >
+  <resultMap id="BaseResultMap" type="com.graduation.pojo.Checkable" >
     <id column="checkid" property="checkid" jdbcType="INTEGER" />
     <result column="memberid" property="memberid" jdbcType="INTEGER" />
-    <result column="membername" property="membername" jdbcType="INTEGER" />
-    <result column="time" property="time" jdbcType="DATE" />
+    <result column="membername" property="membername" jdbcType="VARCHAR" />
+    <result column="checktime" property="checktime" jdbcType="DATE" />
     <result column="ontime" property="ontime" jdbcType="INTEGER" />
-    <result column="leave" property="leave" jdbcType="INTEGER" />
+    <result column="aleave" property="aleave" jdbcType="INTEGER" />
     <result column="missing" property="missing" jdbcType="INTEGER" />
     <result column="late" property="late" jdbcType="INTEGER" />
     <result column="vacation" property="vacation" jdbcType="INTEGER" />
@@ -79,16 +79,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    checkid, memberid, membername, time, ontime, leave, missing, late, vacation, goout, 
-    plus, isdeleted, createtime, createperson, temp1, temp2, temp3
+    checkid, memberid, membername, checktime, ontime, aleave, missing, late, vacation, 
+    goout, plus, isdeleted, createtime, createperson, temp1, temp2, temp3
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.graduation.pojo.CheckExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.graduation.pojo.CheckableExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from check
+    from checkable
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -99,35 +99,35 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from check
+    from checkable
     where checkid = #{checkid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from check
+    delete from checkable
     where checkid = #{checkid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.graduation.pojo.CheckExample" >
-    delete from check
+  <delete id="deleteByExample" parameterType="com.graduation.pojo.CheckableExample" >
+    delete from checkable
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.graduation.pojo.Check" >
-    insert into check (checkid, memberid, membername, 
-      time, ontime, leave, missing, 
-      late, vacation, goout, 
-      plus, isdeleted, createtime, 
-      createperson, temp1, temp2, 
-      temp3)
-    values (#{checkid,jdbcType=INTEGER}, #{memberid,jdbcType=INTEGER}, #{membername,jdbcType=INTEGER}, 
-      #{time,jdbcType=DATE}, #{ontime,jdbcType=INTEGER}, #{leave,jdbcType=INTEGER}, #{missing,jdbcType=INTEGER}, 
-      #{late,jdbcType=INTEGER}, #{vacation,jdbcType=INTEGER}, #{goout,jdbcType=INTEGER}, 
-      #{plus,jdbcType=INTEGER}, #{isdeleted,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
-      #{createperson,jdbcType=VARCHAR}, #{temp1,jdbcType=VARCHAR}, #{temp2,jdbcType=VARCHAR}, 
-      #{temp3,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.graduation.pojo.Checkable" >
+    insert into checkable (checkid, memberid, membername, 
+      checktime, ontime, aleave, 
+      missing, late, vacation, 
+      goout, plus, isdeleted, 
+      createtime, createperson, temp1, 
+      temp2, temp3)
+    values (#{checkid,jdbcType=INTEGER}, #{memberid,jdbcType=INTEGER}, #{membername,jdbcType=VARCHAR}, 
+      #{checktime,jdbcType=DATE}, #{ontime,jdbcType=INTEGER}, #{aleave,jdbcType=INTEGER}, 
+      #{missing,jdbcType=INTEGER}, #{late,jdbcType=INTEGER}, #{vacation,jdbcType=INTEGER}, 
+      #{goout,jdbcType=INTEGER}, #{plus,jdbcType=INTEGER}, #{isdeleted,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{createperson,jdbcType=VARCHAR}, #{temp1,jdbcType=VARCHAR}, 
+      #{temp2,jdbcType=VARCHAR}, #{temp3,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.graduation.pojo.Check" >
-    insert into check
+  <insert id="insertSelective" parameterType="com.graduation.pojo.Checkable" >
+    insert into checkable
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="checkid != null" >
         checkid,
@@ -138,14 +138,14 @@
       <if test="membername != null" >
         membername,
       </if>
-      <if test="time != null" >
-        time,
+      <if test="checktime != null" >
+        checktime,
       </if>
       <if test="ontime != null" >
         ontime,
       </if>
-      <if test="leave != null" >
-        leave,
+      <if test="aleave != null" >
+        aleave,
       </if>
       <if test="missing != null" >
         missing,
@@ -189,16 +189,16 @@
         #{memberid,jdbcType=INTEGER},
       </if>
       <if test="membername != null" >
-        #{membername,jdbcType=INTEGER},
+        #{membername,jdbcType=VARCHAR},
       </if>
-      <if test="time != null" >
-        #{time,jdbcType=DATE},
+      <if test="checktime != null" >
+        #{checktime,jdbcType=DATE},
       </if>
       <if test="ontime != null" >
         #{ontime,jdbcType=INTEGER},
       </if>
-      <if test="leave != null" >
-        #{leave,jdbcType=INTEGER},
+      <if test="aleave != null" >
+        #{aleave,jdbcType=INTEGER},
       </if>
       <if test="missing != null" >
         #{missing,jdbcType=INTEGER},
@@ -235,14 +235,14 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.graduation.pojo.CheckExample" resultType="java.lang.Integer" >
-    select count(*) from check
+  <select id="countByExample" parameterType="com.graduation.pojo.CheckableExample" resultType="java.lang.Integer" >
+    select count(*) from checkable
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update check
+    update checkable
     <set >
       <if test="record.checkid != null" >
         checkid = #{record.checkid,jdbcType=INTEGER},
@@ -251,16 +251,16 @@
         memberid = #{record.memberid,jdbcType=INTEGER},
       </if>
       <if test="record.membername != null" >
-        membername = #{record.membername,jdbcType=INTEGER},
+        membername = #{record.membername,jdbcType=VARCHAR},
       </if>
-      <if test="record.time != null" >
-        time = #{record.time,jdbcType=DATE},
+      <if test="record.checktime != null" >
+        checktime = #{record.checktime,jdbcType=DATE},
       </if>
       <if test="record.ontime != null" >
         ontime = #{record.ontime,jdbcType=INTEGER},
       </if>
-      <if test="record.leave != null" >
-        leave = #{record.leave,jdbcType=INTEGER},
+      <if test="record.aleave != null" >
+        aleave = #{record.aleave,jdbcType=INTEGER},
       </if>
       <if test="record.missing != null" >
         missing = #{record.missing,jdbcType=INTEGER},
@@ -301,13 +301,13 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update check
+    update checkable
     set checkid = #{record.checkid,jdbcType=INTEGER},
       memberid = #{record.memberid,jdbcType=INTEGER},
-      membername = #{record.membername,jdbcType=INTEGER},
-      time = #{record.time,jdbcType=DATE},
+      membername = #{record.membername,jdbcType=VARCHAR},
+      checktime = #{record.checktime,jdbcType=DATE},
       ontime = #{record.ontime,jdbcType=INTEGER},
-      leave = #{record.leave,jdbcType=INTEGER},
+      aleave = #{record.aleave,jdbcType=INTEGER},
       missing = #{record.missing,jdbcType=INTEGER},
       late = #{record.late,jdbcType=INTEGER},
       vacation = #{record.vacation,jdbcType=INTEGER},
@@ -323,23 +323,23 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.graduation.pojo.Check" >
-    update check
+  <update id="updateByPrimaryKeySelective" parameterType="com.graduation.pojo.Checkable" >
+    update checkable
     <set >
       <if test="memberid != null" >
         memberid = #{memberid,jdbcType=INTEGER},
       </if>
       <if test="membername != null" >
-        membername = #{membername,jdbcType=INTEGER},
+        membername = #{membername,jdbcType=VARCHAR},
       </if>
-      <if test="time != null" >
-        time = #{time,jdbcType=DATE},
+      <if test="checktime != null" >
+        checktime = #{checktime,jdbcType=DATE},
       </if>
       <if test="ontime != null" >
         ontime = #{ontime,jdbcType=INTEGER},
       </if>
-      <if test="leave != null" >
-        leave = #{leave,jdbcType=INTEGER},
+      <if test="aleave != null" >
+        aleave = #{aleave,jdbcType=INTEGER},
       </if>
       <if test="missing != null" >
         missing = #{missing,jdbcType=INTEGER},
@@ -377,13 +377,13 @@
     </set>
     where checkid = #{checkid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.graduation.pojo.Check" >
-    update check
+  <update id="updateByPrimaryKey" parameterType="com.graduation.pojo.Checkable" >
+    update checkable
     set memberid = #{memberid,jdbcType=INTEGER},
-      membername = #{membername,jdbcType=INTEGER},
-      time = #{time,jdbcType=DATE},
+      membername = #{membername,jdbcType=VARCHAR},
+      checktime = #{checktime,jdbcType=DATE},
       ontime = #{ontime,jdbcType=INTEGER},
-      leave = #{leave,jdbcType=INTEGER},
+      aleave = #{aleave,jdbcType=INTEGER},
       missing = #{missing,jdbcType=INTEGER},
       late = #{late,jdbcType=INTEGER},
       vacation = #{vacation,jdbcType=INTEGER},
@@ -397,4 +397,16 @@
       temp3 = #{temp3,jdbcType=VARCHAR}
     where checkid = #{checkid,jdbcType=INTEGER}
   </update>
+  <select id="pageSelect" parameterType="map" resultMap="BaseResultMap">
+      select * from checkable 
+       <if test="id != null" >
+       where checkid=#{id,jdbcType=INTEGER} 
+       </if>
+       <if test="sort != null">
+       order by #{sort,jdbcType=VARCHAR} #{order,jdbcType=VARCHAR} limit #{page,jdbcType=INTEGER},#{rows,jdbcType=INTEGER}
+       </if>
+       <if test="sort == null">
+       limit #{page,jdbcType=INTEGER},#{rows,jdbcType=INTEGER}
+       </if>
+  </select>
 </mapper>

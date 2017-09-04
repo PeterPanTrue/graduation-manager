@@ -1,9 +1,11 @@
 package com.graduation.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.graduation.pojo.Salary;
 import com.graduation.pojo.SalaryExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface SalaryMapper {
     int countByExample(SalaryExample example);
@@ -17,6 +19,8 @@ public interface SalaryMapper {
     int insertSelective(Salary record);
 
     List<Salary> selectByExample(SalaryExample example);
+    
+    List<Salary> pageSelect(@Param("id") Integer id, @Param("page") Integer  page, @Param("rows") Integer  rows,@Param("sort") String  sort, @Param("order") String  order);
 
     Salary selectByPrimaryKey(Integer salaryid);
 

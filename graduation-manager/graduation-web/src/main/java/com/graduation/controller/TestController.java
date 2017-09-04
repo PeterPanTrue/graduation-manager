@@ -1,5 +1,6 @@
 package com.graduation.controller;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,5 +28,11 @@ public class TestController {
 	@RequestMapping("/b.htm")
 	public String b(){
 		return "list.jsp";
+	}
+	public static void main(String[] args) {
+		BigDecimal bd = new BigDecimal("2.0180000E7"); 
+		String str = bd.toPlainString();
+		int a = Integer.parseInt(str);
+		System.out.println(a);
 	}
 }

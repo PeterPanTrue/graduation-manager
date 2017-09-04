@@ -2,18 +2,18 @@ package com.graduation.pojo;
 
 import java.util.Date;
 
-public class Check {
+public class Checkable {
     private Integer checkid;
 
     private Integer memberid;
 
-    private Integer membername;
+    private String membername;
 
-    private Date time;
+    private Date checktime;
 
     private Integer ontime;
 
-    private Integer leave;
+    private Integer aleave;
 
     private Integer missing;
 
@@ -53,20 +53,20 @@ public class Check {
         this.memberid = memberid;
     }
 
-    public Integer getMembername() {
+    public String getMembername() {
         return membername;
     }
 
-    public void setMembername(Integer membername) {
-        this.membername = membername;
+    public void setMembername(String membername) {
+        this.membername = membername == null ? null : membername.trim();
     }
 
-    public Date getTime() {
-        return time;
+    public Date getChecktime() {
+        return checktime;
     }
 
-    public void setTime(Date time) {
-        this.time = time;
+    public void setChecktime(Date checktime) {
+        this.checktime = checktime;
     }
 
     public Integer getOntime() {
@@ -77,12 +77,12 @@ public class Check {
         this.ontime = ontime;
     }
 
-    public Integer getLeave() {
-        return leave;
+    public Integer getAleave() {
+        return aleave;
     }
 
-    public void setLeave(Integer leave) {
-        this.leave = leave;
+    public void setAleave(Integer aleave) {
+        this.aleave = aleave;
     }
 
     public Integer getMissing() {

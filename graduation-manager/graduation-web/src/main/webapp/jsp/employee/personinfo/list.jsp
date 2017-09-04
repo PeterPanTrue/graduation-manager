@@ -50,7 +50,9 @@
 			class="easyui-linkbutton" iconCls="icon-remove" plain="true"
 			onclick="destroyUser()">删除员工信息</a> &nbsp;&nbsp;<a href="#"
 			class="easyui-linkbutton" iconCls="icon-save" plain="true"
-			onclick="showUser()">查看员工信息</a>
+			onclick="showUser()">查看员工信息</a>&nbsp;&nbsp;<a href="/employee/writeExcel.htm"
+			class="easyui-linkbutton" iconCls="icon-print" plain="true"
+			onclick="">导出员工信息</a>
 		<span id="tb" style="padding-top:3px;float:right;">
 		    <span>
 		        <input class="easyui-combobox" id="ids"  
@@ -279,7 +281,6 @@
 		});
 	}
 	function saveUser() {
-	    alert(url);
 		$('#fm').form('submit', {
 			url : url,
 			onSubmit : function() {

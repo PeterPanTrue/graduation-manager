@@ -102,7 +102,7 @@
               ,{
                 text : '考勤管理',
                 items : [
-                  {id : 'tab1',text : '考勤记录',href : 'search/tab.html'}
+                  {id : 'tab1',text : '考勤记录',href : '/check/check/list.htm'}
                 ]
               }]
           },{
@@ -121,11 +121,18 @@
           },{
             id:'each',
             menu:[{
-                text:'薪酬福利',
+                text:'薪酬工资',
                 items:[
-                  {id:'code',text:'基本工资管理',href:'detail/code.html'},
-                  {id:'example',text:'奖惩管理',href:'detail/example.html'},
-                  {id:'introduce',text:'待遇福利',href:'detail/introduce.html'}
+                  {id:'code',text:'基本工资管理',href:'/salary/base/list.htm'},
+                  {id:'code',text:'实时工资管理',href:'/salary/total/list.htm'},
+                  {id:'example',text:'奖惩补贴管理',href:'/reword/reword/list.htm'},
+                ]
+              },
+              {
+                text:'福利待遇',
+                items:[
+                  {id:'introduce2',text:'待遇福利',href:'/boon/boon/list.htm'},
+                  {id:'introduce',text:'其他',href:'detail/introduce.html'}
                 ]
               }]
           },{
@@ -155,12 +162,6 @@
                   {id:'example',text:'角色权限的制定',href:'/admin/role/list.htm'},
                   {id:'introduce',text:'部门的制定',href:'/admin/department/list.htm'},
                   {id:'introduce',text:'岗位的制定',href:'/admin/position/list.htm'}
-                ]
-              },{
-                text : '数据管理',
-                items : [
-                  {id : 'tab',text : '数据备份',href : 'search/tab.html'},
-                  {id : 'tab',text : '数据还原',href : 'search/tab.html'}
                 ]
               },{
                 text : '其他管理',

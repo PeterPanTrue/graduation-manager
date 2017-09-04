@@ -240,4 +240,16 @@
       temp3 = #{temp3,jdbcType=VARCHAR}
     where boonid = #{boonid,jdbcType=INTEGER}
   </update>
+  <select id="pageSelect" parameterType="map" resultMap="BaseResultMap">
+      select * from boon  
+       <if test="id != null" >
+       where boonid=#{id,jdbcType=INTEGER} 
+       </if>
+       <if test="sort != null">
+       order by #{sort,jdbcType=VARCHAR} #{order,jdbcType=VARCHAR} limit #{page,jdbcType=INTEGER},#{rows,jdbcType=INTEGER}
+       </if>
+       <if test="sort == null">
+       limit #{page,jdbcType=INTEGER},#{rows,jdbcType=INTEGER}
+       </if>
+  </select>
 </mapper>

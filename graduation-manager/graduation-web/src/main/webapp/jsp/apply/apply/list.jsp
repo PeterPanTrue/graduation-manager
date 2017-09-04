@@ -78,7 +78,9 @@
 			iconCls="icon-add" plain="true" onclick="secondUser2()">二面否决</a> <a
 			href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true"
 			onclick="admitUser()">审核录入</a> <a href="#" class="easyui-linkbutton"
-			iconCls="icon-save" plain="true" onclick="admitUser2()">审核否決</a>) <span
+			iconCls="icon-save" plain="true" onclick="admitUser2()">审核否決</a>)&nbsp;&nbsp;&nbsp; <a href="/apply/writeExcel.htm"
+			class="easyui-linkbutton" iconCls="icon-print" plain="true"
+			onclick="">导出信息</a> <span
 			id="tb" style="padding-top:3px;float:right;"> <span>
 				ID:</span> <input id="id"
 			style="line-height:18px;border:1px solid #000000;"> <a

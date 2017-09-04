@@ -48,19 +48,30 @@ label {
 
 <body data-spy="scroll" data-target="#myScrollspy">
 	<div class="wrap">
-		<ul class="nav">
-			<li>
-				<div></div></li>
-			<li>
-				<p style="width:250px;font-size:22px;">商业银行招聘</p></li>
-			<li><a href="http://localhost:8082/jsp/require/before/main.jsp">银行招聘</a>
-			</li>
-			<li><a href="#a3">招聘流程</a></li>
-			<li><a href="#a4">人才计划</a></li>
-			<li><a href="#a4">招聘职位</a></li>
-			<li><a href="#a5">QAQ</a></li>
-		</ul>
-	</div>
+			<ul class="nav">
+				<li>
+					<div></div>
+				</li>
+				<li>
+					<p style="width:250px;font-size:24px;">商&nbsp;业&nbsp;银&nbsp;行</p>
+				</li>
+				<li>
+					<a href="http://localhost:8082/jsp/require/before/web.jsp">银行首页</a>
+				</li>
+				<li>
+					<a href="#a3">公司业务</a>
+				</li>
+				<li>
+					<a href="#a4">个人业务</a>
+				</li>
+				<li>
+					<a href="#a4">电子银行</a>
+				</li>
+				<li>
+					<a href="#a5">今日商行</a>
+				</li>
+			</ul>
+		</div>
 	<br />
 	<br />
 	<div class="container">
@@ -79,7 +90,7 @@ label {
 			<div class="col-xs-9">
 				<form role="form" method="post" action="/apply/insertApply.htm"
 					class="form-horizontal">
-					<h2 id="section1">基本信息</h2>
+					<h2 id="section1" style="border-bottom: 1px dotted #ccc;">基本信息</h2><br/>
 					<div>
 						<div class="form-group">
 							<label class="col-sm-2 control-label">名字:</label>
@@ -123,7 +134,7 @@ label {
 					</div>
 					<br />
 					<br />
-					<h2 id="section2">申请职位</h2>
+					<h2 id="section2" style="border-bottom: 1px dotted #ccc;">申请职位</h2><br/>
 					<div>
 						<div class="form-group">
 							<label class="col-sm-2 control-label">职位名称:</label> <input
@@ -149,7 +160,7 @@ label {
 					</div>
 					<br />
 					<br />
-					<h2 id="section3">学历信息</h2>
+					<h2 id="section3" style="border-bottom: 1px dotted #ccc;">学历信息</h2><br/>
 					<div>
 						<div class="form-group">
 							<label class="col-sm-2 control-label">学历:</label>
@@ -185,7 +196,7 @@ label {
 					</div>
 					<br />
 					<br />
-					<h2 id="section4">工作经验</h2>
+					<h2 id="section4" style="border-bottom: 1px dotted #ccc;">工作经验</h2><br/>
 					<div>
 						<div class="form-group">
 							<label class="col-sm-2 control-label">工作经验:</label>

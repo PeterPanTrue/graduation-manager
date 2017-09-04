@@ -2,6 +2,7 @@ package com.graduation.service.impl;
 
 import java.util.List;
 
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -69,6 +70,12 @@ public class PlanServiceImpl implements PlanService{
 		return mapper.countByExample(example);
 	}
 
+
+	@Override
+	public HSSFWorkbook writeExcel() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 }

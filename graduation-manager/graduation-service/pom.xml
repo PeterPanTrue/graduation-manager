@@ -8,6 +8,11 @@
   </parent>
   <artifactId>graduation-service</artifactId>
   <dependencies>
+        <dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.15</version>
+		</dependency>
 		<dependency>
 			<artifactId>graduation-mapper</artifactId>
 			<groupId>com.graduation</groupId>

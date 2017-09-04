@@ -2,6 +2,7 @@ package com.graduation.service.impl;
 
 import java.util.List;
 
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -73,6 +74,13 @@ public class PositionServiceImpl implements PositionService{
 		criteria.andNameEqualTo(position);
 		List<Position> list=mapper.selectByExample(example);
 		return list;
+	}
+
+
+	@Override
+	public HSSFWorkbook writeExcel() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

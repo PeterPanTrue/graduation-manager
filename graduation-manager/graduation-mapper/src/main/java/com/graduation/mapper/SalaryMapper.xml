@@ -5,6 +5,8 @@
     <id column="salaryid" property="salaryid" jdbcType="INTEGER" />
     <result column="memberid" property="memberid" jdbcType="INTEGER" />
     <result column="membername" property="membername" jdbcType="VARCHAR" />
+    <result column="position" property="position" jdbcType="VARCHAR" />
+    <result column="department" property="department" jdbcType="VARCHAR" />
     <result column="base" property="base" jdbcType="VARCHAR" />
     <result column="eat" property="eat" jdbcType="VARCHAR" />
     <result column="car" property="car" jdbcType="VARCHAR" />
@@ -12,7 +14,7 @@
     <result column="punishiment" property="punishiment" jdbcType="VARCHAR" />
     <result column="reduce" property="reduce" jdbcType="VARCHAR" />
     <result column="total" property="total" jdbcType="VARCHAR" />
-    <result column="time" property="time" jdbcType="DATE" />
+    <result column="givetime" property="givetime" jdbcType="DATE" />
     <result column="isdeleted" property="isdeleted" jdbcType="INTEGER" />
     <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
     <result column="createperson" property="createperson" jdbcType="VARCHAR" />
@@ -79,8 +81,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    salaryid, memberid, membername, base, eat, car, ontime, punishiment, reduce, total, 
-    time, isdeleted, createtime, createperson, temp1, temp2, temp3
+    salaryid, memberid, membername, position, department, base, eat, car, ontime, punishiment, 
+    reduce, total, givetime, isdeleted, createtime, createperson, temp1, temp2, temp3
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.graduation.pojo.SalaryExample" >
     select
@@ -114,17 +116,19 @@
   </delete>
   <insert id="insert" parameterType="com.graduation.pojo.Salary" >
     insert into salary (salaryid, memberid, membername, 
-      base, eat, car, ontime, 
-      punishiment, reduce, total, 
-      time, isdeleted, createtime, 
-      createperson, temp1, temp2, 
-      temp3)
+      position, department, base, 
+      eat, car, ontime, punishiment, 
+      reduce, total, givetime, 
+      isdeleted, createtime, createperson, 
+      temp1, temp2, temp3
+      )
     values (#{salaryid,jdbcType=INTEGER}, #{memberid,jdbcType=INTEGER}, #{membername,jdbcType=VARCHAR}, 
-      #{base,jdbcType=VARCHAR}, #{eat,jdbcType=VARCHAR}, #{car,jdbcType=VARCHAR}, #{ontime,jdbcType=VARCHAR}, 
-      #{punishiment,jdbcType=VARCHAR}, #{reduce,jdbcType=VARCHAR}, #{total,jdbcType=VARCHAR}, 
-      #{time,jdbcType=DATE}, #{isdeleted,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
-      #{createperson,jdbcType=VARCHAR}, #{temp1,jdbcType=VARCHAR}, #{temp2,jdbcType=VARCHAR}, 
-      #{temp3,jdbcType=VARCHAR})
+      #{position,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, #{base,jdbcType=VARCHAR}, 
+      #{eat,jdbcType=VARCHAR}, #{car,jdbcType=VARCHAR}, #{ontime,jdbcType=VARCHAR}, #{punishiment,jdbcType=VARCHAR}, 
+      #{reduce,jdbcType=VARCHAR}, #{total,jdbcType=VARCHAR}, #{givetime,jdbcType=DATE}, 
+      #{isdeleted,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{createperson,jdbcType=VARCHAR}, 
+      #{temp1,jdbcType=VARCHAR}, #{temp2,jdbcType=VARCHAR}, #{temp3,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.graduation.pojo.Salary" >
     insert into salary
@@ -137,6 +141,12 @@
       </if>
       <if test="membername != null" >
         membername,
+      </if>
+      <if test="position != null" >
+        position,
+      </if>
+      <if test="department != null" >
+        department,
       </if>
       <if test="base != null" >
         base,
@@ -159,8 +169,8 @@
       <if test="total != null" >
         total,
       </if>
-      <if test="time != null" >
-        time,
+      <if test="givetime != null" >
+        givetime,
       </if>
       <if test="isdeleted != null" >
         isdeleted,
@@ -191,6 +201,12 @@
       <if test="membername != null" >
         #{membername,jdbcType=VARCHAR},
       </if>
+      <if test="position != null" >
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        #{department,jdbcType=VARCHAR},
+      </if>
       <if test="base != null" >
         #{base,jdbcType=VARCHAR},
       </if>
@@ -212,8 +228,8 @@
       <if test="total != null" >
         #{total,jdbcType=VARCHAR},
       </if>
-      <if test="time != null" >
-        #{time,jdbcType=DATE},
+      <if test="givetime != null" >
+        #{givetime,jdbcType=DATE},
       </if>
       <if test="isdeleted != null" >
         #{isdeleted,jdbcType=INTEGER},
@@ -253,6 +269,12 @@
       <if test="record.membername != null" >
         membername = #{record.membername,jdbcType=VARCHAR},
       </if>
+      <if test="record.position != null" >
+        position = #{record.position,jdbcType=VARCHAR},
+      </if>
+      <if test="record.department != null" >
+        department = #{record.department,jdbcType=VARCHAR},
+      </if>
       <if test="record.base != null" >
         base = #{record.base,jdbcType=VARCHAR},
       </if>
@@ -274,8 +296,8 @@
       <if test="record.total != null" >
         total = #{record.total,jdbcType=VARCHAR},
       </if>
-      <if test="record.time != null" >
-        time = #{record.time,jdbcType=DATE},
+      <if test="record.givetime != null" >
+        givetime = #{record.givetime,jdbcType=DATE},
       </if>
       <if test="record.isdeleted != null" >
         isdeleted = #{record.isdeleted,jdbcType=INTEGER},
@@ -305,6 +327,8 @@
     set salaryid = #{record.salaryid,jdbcType=INTEGER},
       memberid = #{record.memberid,jdbcType=INTEGER},
       membername = #{record.membername,jdbcType=VARCHAR},
+      position = #{record.position,jdbcType=VARCHAR},
+      department = #{record.department,jdbcType=VARCHAR},
       base = #{record.base,jdbcType=VARCHAR},
       eat = #{record.eat,jdbcType=VARCHAR},
       car = #{record.car,jdbcType=VARCHAR},
@@ -312,7 +336,7 @@
       punishiment = #{record.punishiment,jdbcType=VARCHAR},
       reduce = #{record.reduce,jdbcType=VARCHAR},
       total = #{record.total,jdbcType=VARCHAR},
-      time = #{record.time,jdbcType=DATE},
+      givetime = #{record.givetime,jdbcType=DATE},
       isdeleted = #{record.isdeleted,jdbcType=INTEGER},
       createtime = #{record.createtime,jdbcType=TIMESTAMP},
       createperson = #{record.createperson,jdbcType=VARCHAR},
@@ -331,6 +355,12 @@
       </if>
       <if test="membername != null" >
         membername = #{membername,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        department = #{department,jdbcType=VARCHAR},
       </if>
       <if test="base != null" >
         base = #{base,jdbcType=VARCHAR},
@@ -353,8 +383,8 @@
       <if test="total != null" >
         total = #{total,jdbcType=VARCHAR},
       </if>
-      <if test="time != null" >
-        time = #{time,jdbcType=DATE},
+      <if test="givetime != null" >
+        givetime = #{givetime,jdbcType=DATE},
       </if>
       <if test="isdeleted != null" >
         isdeleted = #{isdeleted,jdbcType=INTEGER},
@@ -381,6 +411,8 @@
     update salary
     set memberid = #{memberid,jdbcType=INTEGER},
       membername = #{membername,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      department = #{department,jdbcType=VARCHAR},
       base = #{base,jdbcType=VARCHAR},
       eat = #{eat,jdbcType=VARCHAR},
       car = #{car,jdbcType=VARCHAR},
@@ -388,7 +420,7 @@
       punishiment = #{punishiment,jdbcType=VARCHAR},
       reduce = #{reduce,jdbcType=VARCHAR},
       total = #{total,jdbcType=VARCHAR},
-      time = #{time,jdbcType=DATE},
+      givetime = #{givetime,jdbcType=DATE},
       isdeleted = #{isdeleted,jdbcType=INTEGER},
       createtime = #{createtime,jdbcType=TIMESTAMP},
       createperson = #{createperson,jdbcType=VARCHAR},
@@ -397,4 +429,16 @@
       temp3 = #{temp3,jdbcType=VARCHAR}
     where salaryid = #{salaryid,jdbcType=INTEGER}
   </update>
+  <select id="pageSelect" parameterType="map" resultMap="BaseResultMap">
+      select * from salary 
+       <if test="id != null" >
+       where salaryid=#{id,jdbcType=INTEGER} 
+       </if>
+       <if test="sort != null">
+       order by #{sort,jdbcType=VARCHAR} #{order,jdbcType=VARCHAR} limit #{page,jdbcType=INTEGER},#{rows,jdbcType=INTEGER}
+       </if>
+       <if test="sort == null">
+       limit #{page,jdbcType=INTEGER},#{rows,jdbcType=INTEGER}
+       </if>
+  </select>
 </mapper>

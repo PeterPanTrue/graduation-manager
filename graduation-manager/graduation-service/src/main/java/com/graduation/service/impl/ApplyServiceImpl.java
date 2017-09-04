@@ -2,6 +2,7 @@ package com.graduation.service.impl;
 
 import java.util.List;
 
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import com.graduation.pojo.Apply;
 import com.graduation.pojo.ApplyExample;
 import com.graduation.pojo.ApplyExample.Criteria;
 import com.graduation.service.ApplyService;
+import com.graduation.utils.WriteApplyExcel;
 
 @Service
 public class ApplyServiceImpl implements ApplyService{
@@ -74,6 +76,18 @@ public class ApplyServiceImpl implements ApplyService{
 	public List<Apply> getApplyByTemp(Integer id,Integer page,Integer rows) {
 		List<Apply> list=mapper.pageSelectByTemp(id,(page-1)*rows,rows);
 		return list;
+	}
+
+	@Override
+	public HSSFWorkbook writeExcel() {
+		ApplyExample example=new ApplyExample();
+		List<Apply> list=mapper.selectByExample(example);
+		try {
+			return WriteApplyExcel.writeExcel(list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	

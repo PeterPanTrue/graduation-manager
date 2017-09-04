@@ -23,23 +23,23 @@
 				<li>
 					<div></div>
 				</li>
-				<li >
-					<p style="width:250px;font-size:22px;" >商业银行招聘</p>
+				<li>
+					<p style="width:250px;font-size:24px;">商&nbsp;业&nbsp;银&nbsp;行</p>
 				</li>
 				<li>
-					<a href="main.jsp">银行招聘</a>
+					<a href="http://localhost:8082/jsp/require/before/web.jsp">银行首页</a>
 				</li>
 				<li>
-					<a href="#a3">招聘流程</a>
+					<a href="#a3">公司业务</a>
 				</li>
 				<li>
-					<a href="#a4">人才计划</a>
+					<a href="#a4">个人业务</a>
 				</li>
 				<li>
-					<a href="#a4">招聘职位</a>
+					<a href="#a4">电子银行</a>
 				</li>
 				<li>
-					<a href="#a5">QAQ</a>
+					<a href="#a5">今日商行</a>
 				</li>
 			</ul>
 		</div>

@@ -1,10 +1,14 @@
 package com.graduation.controller;
 
+import java.io.OutputStream;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -97,5 +101,23 @@ public class ApplyController {
 		apply.setAdmitted(0);
 		applyService.update(apply);
 		return "success";
+	}
+	@RequestMapping("/apply/writeExcel.htm")
+	public void writeExcel(HttpServletResponse response){
+		String filename="apply.xls";
+        response.addHeader("Content-Disposition", "attachment;filename="  
+                + new String(filename.getBytes()));  
+        response.setContentType("application/vnd.ms-excel;charset=gb2312");
+        try {
+      	    OutputStream out = response.getOutputStream();  
+            //将创建的Excel对象利用二进制流的形式强制输出到客户端去  
+      	    HSSFWorkbook wb=applyService.writeExcel();
+            wb.write(out);  
+            //强制将数据从内存中保存  
+            out.flush();  
+            out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
