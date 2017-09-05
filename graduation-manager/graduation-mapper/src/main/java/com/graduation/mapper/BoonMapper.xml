@@ -84,6 +84,9 @@
     <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
+    <if test="orderByClause == null" >
+      order by boonid desc
+    </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -249,7 +252,7 @@
        order by #{sort,jdbcType=VARCHAR} #{order,jdbcType=VARCHAR} limit #{page,jdbcType=INTEGER},#{rows,jdbcType=INTEGER}
        </if>
        <if test="sort == null">
-       limit #{page,jdbcType=INTEGER},#{rows,jdbcType=INTEGER}
+       order by boonid desc limit #{page,jdbcType=INTEGER},#{rows,jdbcType=INTEGER}
        </if>
   </select>
 </mapper>

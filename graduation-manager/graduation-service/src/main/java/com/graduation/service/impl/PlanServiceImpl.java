@@ -76,6 +76,15 @@ public class PlanServiceImpl implements PlanService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public List<Plan> selectByPosition(String position) {
+		PlanExample example=new PlanExample();
+		Criteria criteria=example.createCriteria();
+		criteria.andPeopleEqualTo(position);
+		List<Plan> list=mapper.selectByExample(example);
+		return list;
+	}
 	
 
 }

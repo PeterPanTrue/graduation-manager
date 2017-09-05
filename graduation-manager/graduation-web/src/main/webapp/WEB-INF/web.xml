@@ -13,18 +13,10 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	<!--  
-	<servlet>
-	    <servlet-name>cxf</servlet-name>
-	    <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
-	    <load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet-mapping>
-	    <servlet-name>cxf</servlet-name>
-	    <url-pattern>/cxf/*</url-pattern>
-	</servlet-mapping>
-	-->
-	
+	<!-- <servlet> <servlet-name>cxf</servlet-name> <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class> 
+		<load-on-startup>1</load-on-startup> </servlet> <servlet-mapping> <servlet-name>cxf</servlet-name> 
+		<url-pattern>/cxf/*</url-pattern> </servlet-mapping> -->
+
 	<!-- 解决post乱码 -->
 	<filter>
 		<filter-name>CharacterEncodingFilter</filter-name>
@@ -67,5 +59,14 @@
 		<servlet-name>graduation-manager</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+
+	<filter>
+		<filter-name>noCacheFilter</filter-name>
+		<filter-class>com.graduation.filter.NoCacheFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>noCacheFilter</filter-name>
+		<url-pattern>*.htm</url-pattern>
+	</filter-mapping>
 
 </web-app>

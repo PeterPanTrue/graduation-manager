@@ -29,7 +29,7 @@ public class SalaryManagerInterceptor implements HandlerInterceptor{
 		if(user.getRolename()==null){
 			request.getRequestDispatcher("/jsp/backstage/fail.jsp").forward(request, response);
 			return false;
-		}else if(!user.getRolename().equals("销售专员")){
+		}else if(!user.getRolename().equals("薪酬专员")){
 			if(user.getRolename().equals("人事部长")||user.getRolename().equals("总经理")||user.getRolename().equals("管理员")){
 				return true;
 			}else{

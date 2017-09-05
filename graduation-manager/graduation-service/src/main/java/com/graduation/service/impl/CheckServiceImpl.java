@@ -77,6 +77,15 @@ public class CheckServiceImpl implements CheckService{
 		return null;
 	}
 
+	@Override
+	public List<Checkable> selectByMemberId(int id) {
+		CheckableExample example=new CheckableExample();
+		Criteria criteria=example.createCriteria();
+		criteria.andMemberidEqualTo(id);
+		List<Checkable> list=mapper.selectByExample(example);
+		return list;
+	}
+
 	
 
 }

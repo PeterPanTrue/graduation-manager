@@ -22,6 +22,9 @@
 </script>
 </head>
 <body>
+  <c:if test="${sessionScope.user== null }">
+</c:if>
+
 	<table id="dg" title="部门管理" class="easyui-datagrid"
 		style="width:100%;height:480px;" url="/admin/listDepartment.htm" idField="departmentid"
 		toolbar="#toolbar" rownumbers="true" fitColumns="true" singleSelect="false"

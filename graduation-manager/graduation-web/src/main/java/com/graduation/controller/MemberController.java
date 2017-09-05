@@ -3,6 +3,7 @@ package com.graduation.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,9 +21,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import com.graduation.pojo.Boon;
+import com.graduation.pojo.Checkable;
 import com.graduation.pojo.Employee;
+import com.graduation.pojo.Plan;
+import com.graduation.pojo.Reword;
+import com.graduation.pojo.Salary;
 import com.graduation.pojo.User;
+import com.graduation.service.BoonService;
+import com.graduation.service.CheckService;
 import com.graduation.service.EmployeeService;
+import com.graduation.service.PlanService;
+import com.graduation.service.RewordService;
+import com.graduation.service.SalaryService;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 
@@ -31,6 +42,16 @@ public class MemberController {
 	
 	@Autowired
 	private EmployeeService employeeService;
+	@Autowired
+	private SalaryService salaryService;
+	@Autowired
+	private BoonService boonService;
+	@Autowired
+	private RewordService rewordService;
+	@Autowired
+	private PlanService planService;
+	@Autowired
+	private CheckService checkService;
 	
 	@RequestMapping("/member/{name}/list.htm")
 	public String index(@PathVariable("name") String name){
@@ -81,5 +102,45 @@ public class MemberController {
 		response.setContentType("text/html;charset=UTF-8");
 		response.addHeader("location", "list.htm");     //路径问题好好理解
 		response.setStatus(302);
+	}
+	@RequestMapping("/member/listSalary.htm")
+	public String  listSalary(Model model,HttpServletRequest request){
+		User user=(User) request.getSession().getAttribute("user");
+		List<Salary>list=salaryService.selectByMemberId(user.getId());
+		model.addAttribute("list", list);
+		return "/member/salary/list.jsp";
+	}
+	@RequestMapping("/member/listBoon.htm")
+	public String  listBoon(Model model,HttpServletRequest request){
+		List<Boon>list=boonService.select();
+		model.addAttribute("list", list);
+		return "/member/boon/list.jsp";
+	}
+	@RequestMapping("/member/listReword.htm")
+	public String  listReword(Model model,HttpServletRequest request){
+		List<Reword>list=rewordService.select();
+		model.addAttribute("list", list);
+		return "/member/reword/list.jsp";
+	}
+	@RequestMapping("/member/listPlan.htm")
+	public String  listPlan(Model model,HttpServletRequest request){
+		User user=(User) request.getSession().getAttribute("user");
+		Employee employee=employeeService.get(user.getId());
+		List<Plan>list=planService.selectByPosition(employee.getPositionname().trim());
+		model.addAttribute("list", list);
+		return "/member/plan/list.jsp";
+	}
+	@RequestMapping("/member/listCheck.htm")
+	public String  listCheck(Model model,HttpServletRequest request){
+		User user=(User) request.getSession().getAttribute("user");
+		List<Checkable>list=checkService.selectByMemberId(user.getId());
+		model.addAttribute("list", list);
+		return "/member/check/list.jsp";
+	}
+	@RequestMapping("/member/detailPlan.htm")
+	public String  detailSalary(Model model,Integer id){
+		Plan plan=planService.get(id);
+		model.addAttribute("plan", plan);
+		return "/member/plan/detail.jsp";
 	}
 }

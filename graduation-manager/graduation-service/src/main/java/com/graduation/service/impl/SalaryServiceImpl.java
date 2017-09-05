@@ -78,6 +78,15 @@ public class SalaryServiceImpl implements SalaryService{
 		return null;
 	}
 
+	@Override
+	public List<Salary> selectByMemberId(int id) {
+		SalaryExample example=new SalaryExample();
+		Criteria criteria=example.createCriteria();
+		criteria.andMemberidEqualTo(id);
+		List<Salary>list=mapper.selectByExample(example);
+		return list;
+	}
+
 	
 
 }

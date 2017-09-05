@@ -53,15 +53,15 @@
               items:[
                 {id:'code',text:'首页公告',href:'http://baidu.com',closeable : false},
                 {id:'main-menu',text:'个人信息',href:'/member/list.htm'},
-                {id:'second-menu',text:'工资发放记录',href:'main/second-menu.html'},
-                {id:'dyna-menu',text:'福利待遇',href:'main/dyna-menu.html'}
+                {id:'second-menu',text:'工资发放记录',href:'/member/listSalary.htm'},
+                {id:'dyna-menu',text:'福利待遇',href:'/member/listBoon.htm'}
               ]
             },{
               text:'详细信息',
               items:[
-                {id:'operation',text:'奖惩信息',href:'main/operation.html'},
-                {id:'quick1',text:'考勤信息',href:'main/quick.html'} ,
-                {id:'quick2',text:'培训信息',href:'main/quick.html'}  ,
+                {id:'operation',text:'奖惩信息',href:'/member/listReword.htm'},
+                {id:'quick1',text:'考勤信息',href:'/member/listCheck.htm'} ,
+                {id:'quick2',text:'培训信息',href:'/member/listPlan.htm'}  ,
                 {id:'quick3',text:'数据统计',href:'main/quick.html'} 
               ]
             },{
